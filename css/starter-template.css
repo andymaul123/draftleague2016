@@ -1,0 +1,13 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.banner, .footer {
+	width: 100%;
+	min-height: 100px;
+	height: 100px;
+	background-color: #222;
+}
