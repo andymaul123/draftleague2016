@@ -11,6 +11,11 @@ body {
 	height: 100px;
 	background-color: #222;
 }
+.roster-block h3 {
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 .circular {
 	width: 150px;
 	height: 150px;
@@ -22,6 +27,9 @@ body {
 	}
 .zurgo {
 	background: url(../img/zurgo.jpg) no-repeat;
+}
+.hazezon {
+	background: url(../img/hazezon.jpg) no-repeat;
 }
 .symbol-container {
 
