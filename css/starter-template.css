@@ -11,3 +11,13 @@ body {
 	height: 100px;
 	background-color: #222;
 }
+.circular {
+	width: 150px;
+	height: 150px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	}
+.zurgo {
+	background: url(../img/zurgo.jpg) no-repeat;
+}
