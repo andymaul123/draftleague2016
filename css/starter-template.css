@@ -11,6 +11,9 @@ body {
 	height: 100px;
 	background-color: #222;
 }
+.roster-block {
+	margin-bottom: 25px;
+}
 .roster-block h3 {
 	font-size: 18px;
 	margin-top: 5px;
@@ -30,6 +33,9 @@ body {
 }
 .hazezon {
 	background: url(../img/hazezon.jpg) no-repeat;
+}
+.unknown {
+	background: url(../img/unknown.jpg) no-repeat;
 }
 .symbol-container {
 
