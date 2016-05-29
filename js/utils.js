@@ -1,21 +1,29 @@
 $(document).ready(function(){
-  var dropdowns = function () {
-  	console.log("init");
-    var $hiddenFields = $('form').find('.hidden-select'),
-        $selected = $('form').find('.selected'),
-        $menuItems = $('form').find('.dropdown-menu li'),
-        field;
-    $selected.on('click', function (e) {
-        e.preventDefault();
+  // var dropdowns = function () {
+  // 	console.log("init");
+  //   var $hiddenFields = $('form').find('.hidden-select'),
+  //       $selected = $('form').find('.selected'),
+  //       $menuItems = $('form').find('.dropdown-menu li'),
+  //       field;
+  //   $selected.on('click', function (e) {
+  //       e.preventDefault();
+  //   });
+  //   $menuItems.on('click', function () {
+  //       field = $(this).parents('.dropdown-menu').data('field');
+  //       $selected.filter('[data-field="' + field + '"]').text($(this).text());
+  //       $hiddenFields.filter('[data-field="' + field + '"]').val($(this).data('value'));
+  //       $(this).siblings('li').removeClass('active');
+  //       $(this).addClass('active');
+  //   });
+  // };
+
+  $('.radio-btn input').click(function(){
+    console.log('clicked');
+    $(document).find('.radio-btn').each(function(){
+      $(this).removeClass('radio-active');
     });
-    $menuItems.on('click', function () {
-        field = $(this).parents('.dropdown-menu').data('field');
-        $selected.filter('[data-field="' + field + '"]').text($(this).text());
-        $hiddenFields.filter('[data-field="' + field + '"]').val($(this).data('value'));
-        $(this).siblings('li').removeClass('active');
-        $(this).addClass('active');
-    });
-  };
+    $(this).parents('.radio-btn').addClass('radio-active');
+  })
 
 //Loads mtgjson object to client side for typeahead.js to reference
     // var needRefresh = false;
@@ -51,17 +59,19 @@ $(document).ready(function(){
     //   });
     // }
 if($('body').hasClass('draft')){
+  // Typeahead Prefetch for MTG Json 
+
   var onecard = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    // url points to a json file that contains an array of country names, see
-    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/onecard.json
     prefetch: '../draftleague2016/js/json/onecard.json'
   });
 
-  // passing in `null` for the `options` arguments will result in the default
-  // options being used
-  $('#prefetch .typeahead').typeahead(null, {
+  $('#prefetch .typeahead').typeahead({
+    hint: false,
+    highlight: true,
+    minLength: 1
+  }, {
     name: 'onecard',
     source: onecard
   });
@@ -83,7 +93,7 @@ if($('body').hasClass('draft')){
 
 
 
-dropdowns();
+//dropdowns();
 
 
 

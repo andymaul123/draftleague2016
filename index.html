@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <!-- <link rel="icon" href="favicon.ico"> -->
 
     <title>Starter Template for Bootstrap</title>
 
@@ -27,7 +27,7 @@
   <body class="draft">
     <div class="container">
       <div class="banner"></div>
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar">
         <div class="container">
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -39,12 +39,12 @@
         </div>
       </nav>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 rightBordered">
           <h1>Current Player: Alex</h1>
-          <h2>Time Since Last Pick: 40mins</h2>
-          <h2>On Deck: Michael</h2>
+          <h3>Time Since Last Pick: 40mins</h3>
+          <h3>On Deck: Michael</h3>
           <form>
-            <div class="form-group">
+<!--             <div class="form-group">
                 <div class="dropdown">
                   <label>Select Drafter</label>
                   <div data-toggle="dropdown" data-field="state" class="form-control selected">Player</div>
@@ -63,25 +63,58 @@
                   <span class="message"></span>
                   <input type="hidden" name="state" data-field="state" class="hidden-select"/>
                 </div>       
+            </div> -->
+            <div class="form-group" style="width: 60%">
+              <label for="form-player">Select Drafter</label>
+              <br />
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="andy">Andy</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="alex">Alex</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="blake">Blake</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="brendan">Brendan</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="hopper">Hopper</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="justin">Justin</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="michael">Michael</label>
+              </div>
+              <div class="radio radio-btn">
+                <label><input type="radio" name="optradio" value="rikki">Rikki</label>
+              </div>
             </div>
             <div class="form-group" id="prefetch">
               <label for="form-card">Choose Card</label>
-              <input type="text" class="form-control typeahead" id="form-card" placeholder="Choose Card">
+              <input type="text" class="form-control typeahead" id="form-card" placeholder="Enter card name">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
           </form>
         </div>
         <div class="col-md-4">
           <h1>Draft Feed</h1>
-          <div class="feed-block">
-            <p>Brendan drafted Sol Ring at 14:20</p>
-          </div>
-          <div class="feed-block">
-            <p>Brendan drafted Sol Ring at 14:20</p>
-          </div>
-          <div class="feed-block">
-            <p>Brendan drafted Sol Ring at 14:20</p>
-          </div>
+            <table class="table table-striped" id="feed-table">
+              <tr>
+                <th>Latest Picks</th>
+              </tr>
+              <tr>
+                <td>Brendan drafted Sol Ring at 14:21</td>
+              </tr>
+              <tr>
+                <td>Andy drafted Kird Ape at 13:40</td>
+              </tr>
+              <tr>
+                <td>Blake drafted Path to Exile at 11:15</td>
+              </tr>
+            </table>
         </div>       
       </div>
       <div class="footer">

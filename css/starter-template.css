@@ -2,7 +2,9 @@ body {
   background: url(../img/tile.jpg) repeat;
   padding-top: 20px;
 }
-
+h1, h2, h3, h4, p, label {
+	color: #fff;
+}
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -22,6 +24,60 @@ body {
 	-webkit-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	-moz-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
+}
+.navbar {
+	border-radius: 0;
+	margin-bottom: 0;
+	border: none;
+	margin-top: 10px;
+	min-height: 40px;
+}
+ul.nav li {
+	margin-right: 35px;
+}
+ul.nav li a {
+	color: #fff;
+	padding: 10px 0 5px 0;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+ul.nav li a:hover {
+	border-bottom: 2px solid yellow;
+	padding-bottom: 3px;
+	background-color: transparent;
+}
+.radio-btn {
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+.radio-btn label{
+	background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
+    background-repeat: repeat-x;
+    border-color: #245580;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 85px;
+    text-align: center;
+}
+.radio-btn:hover label {
+	background-color: #265a88;
+    background-position: 0 -15px;
+}
+.radio-btn.radio-active label {
+    background-image: linear-gradient(to bottom,#f0ad4e 0,#eb9316 100%);
+    background-repeat: repeat-x;
+    border-color: #e38d13;
+}
+.radio-btn.radio-active:hover label {
+	background-color: #eb9316;
+    background-position: 0 -15px;
+}
+.radio-btn input {
+	display: none;
+}
+.rightBordered {
+	border-right: 1px solid #222;
 }
 .roster-block {
 	margin-bottom: 25px;
@@ -43,11 +99,19 @@ body {
 .deck-list {
 	text-align: center;
 }
+@media(min-width: 1200px) {
+	.deck-list {
+		margin-top: -25px;
+	}
+}
 .deck-list table {
 	text-align: left;
 }
+.form-control {
+	width: 80%;
+}
 input.typeahead {
-	width: 100%;
+	width: 80%;
 }
 span.twitter-typeahead {
 	display: initial!important;
@@ -88,4 +152,7 @@ span.twitter-typeahead {
 .mana-symbol-main {
 	height: 40px;
 	width: 40px;
+}
+.footer {
+	margin-top: 15px;
 }
