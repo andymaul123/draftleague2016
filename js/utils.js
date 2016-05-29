@@ -26,68 +26,64 @@ $(document).ready(function(){
   })
 
 //Loads mtgjson object to client side for typeahead.js to reference
-    // var needRefresh = false;
-    // var mtgjsonLocation = "json/AllCards-x.json";
+    var needRefresh = false;
+    var mtgjsonLocation = "json/onecard.json";
 
 
-    // if(localStorage.getItem('mtgjsonLocation')==null){
-    //   needRefresh = true;
-    // }
+    if(localStorage.getItem('mtgjsonLocation')==null){
+      needRefresh = true;
+    }
     
-    // if(needRefresh){
-    //   $.getJSON(mtgjsonLocationPath, function( data ) {
-    //           var myJson=[],
-    //               variantsArray,
-    //               variantsString;
-    //           for (var key in data){
-    //             if(data[key].title && data[key].value){
-    //               if(data[key].variantslist){
-    //                 variantsArray = data[key].variantslist;
-    //                 variantsString = variantsArray.toString();
-    //               }
-    //               else {
-    //                 variantsString = '';
-    //               }
-    //               myJson.push({
-    //                 name: data[key].title,
-    //                 definition: data[key].value,
-    //                 variants: variantsString
-    //               });
-    //             }
-    //           }
-    //           localStorage.setItem('mtgjsonLocation', JSON.stringify(myJson));
-    //   });
-    // }
+    if(needRefresh){
+      $.getJSON(mtgjsonLocation, function( data ) {
+              var localjson=[];
+              for (var key in data){
+                // if(data[key].name && data[key].value){
+                  // if(data[key].variantslist){
+                  //   variantsArray = data[key].variantslist;
+                  //   variantsString = variantsArray.toString();
+                  // }
+                  // else {
+                  //   variantsString = '';
+                  // }
+                  localjson.push({
+                    name: data[key].name,
+                  });
+                // }
+              }
+              localStorage.setItem('mtgjsonLocation', JSON.stringify(localjson));
+      });
+    }
 if($('body').hasClass('draft')){
   // Typeahead Prefetch for MTG Json 
 
-  var onecard = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.whitespace,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: '../draftleague2016/js/json/onecard.json'
-  });
+  // var onecard = new Bloodhound({
+  //   datumTokenizer: Bloodhound.tokenizers.whitespace,
+  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
+  //   prefetch: '../draftleague2016/js/json/onecard.json'
+  // });
 
-  $('#prefetch .typeahead').typeahead({
-    hint: false,
-    highlight: true,
-    minLength: 1
-  }, {
-    name: 'onecard',
-    source: onecard
-  });
+  // $('#prefetch .typeahead').typeahead({
+  //   hint: false,
+  //   highlight: true,
+  //   minLength: 1
+  // }, {
+  //   name: 'onecard',
+  //   source: onecard
+  // });
 
-  var inputLength = $('#form-card').outerWidth();
-  $('.tt-dataset').css('width', inputLength);
+  // var inputLength = $('#form-card').outerWidth();
+  // $('.tt-dataset').css('width', inputLength);
 
-  $( window ).resize(function() {
-    inputLength = $('#form-card').outerWidth();
-    $('.tt-dataset').css('width', inputLength);
-  });
+  // $( window ).resize(function() {
+  //   inputLength = $('#form-card').outerWidth();
+  //   $('.tt-dataset').css('width', inputLength);
+  // });
   
-  $(window).on("orientationchange",function(){
-    inputLength = $('#form-card').outerWidth();
-    $('.tt-dataset').css('width', inputLength);
-  });
+  // $(window).on("orientationchange",function(){
+  //   inputLength = $('#form-card').outerWidth();
+  //   $('.tt-dataset').css('width', inputLength);
+  // });
 }
 
 

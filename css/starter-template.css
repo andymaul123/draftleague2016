@@ -87,6 +87,36 @@ ul.nav li a:hover {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+table {
+	color: #fff;
+	border-top: 1px solid;
+}
+.table>tbody>tr>td {
+	border: none;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+.table-striped>tbody>tr:nth-of-type(odd) td {
+    background-color: hsla(0, 0%, 50%, 0.08);
+}
+.table-striped>tbody>tr:nth-of-type(even) td:nth-child(2) {
+    background-color: hsla(0, 0%, 50%, 0.08);
+}
+.table-striped>tbody>tr:nth-of-type(odd) td:nth-child(2) {
+    background-color: transparent;
+}
+span.draft-player {
+	color: #2AABD2;
+}
+span.draft-card {
+	color: #F4F9A5;
+}
+span.draft-header {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+}
 .circular {
 	width: 150px;
 	height: 150px;
@@ -110,6 +140,9 @@ ul.nav li a:hover {
 .form-control {
 	width: 80%;
 }
+input[type=text] {
+	background-color: #222;
+}
 input.typeahead {
 	width: 80%;
 }
@@ -123,6 +156,10 @@ span.twitter-typeahead {
 .tt-suggestion {
 	margin-top: 2px;
 	margin-bottom: 2px;
+}
+.well {
+	background-color: transparent;
+	border: none;
 }
 .zurgo {
 	background: url(../img/zurgo.jpg) no-repeat;
