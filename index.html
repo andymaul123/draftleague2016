@@ -24,7 +24,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body class="draft">
     <div class="container">
       <div class="banner"></div>
       <nav class="navbar navbar-inverse">
@@ -64,9 +64,9 @@
                   <input type="hidden" name="state" data-field="state" class="hidden-select"/>
                 </div>       
             </div>
-            <div class="form-group">
+            <div class="form-group" id="prefetch">
               <label for="form-card">Choose Card</label>
-              <input type="text" class="form-control" id="form-card" placeholder="Choose Card">
+              <input type="text" class="form-control typeahead" id="form-card" placeholder="Choose Card">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -97,5 +97,7 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/utils.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/typeahead.js"></script>
   </body>
 </html>
