@@ -8,13 +8,17 @@ body {
   text-align: center;
 }
 .banner, .footer {
+	min-height: 150px;
+	max-height: 150px;
+	height: 100%;
+	max-width: 100%;
+	min-width: 1px;
 	width: 100%;
-	min-height: 143px;
-	height: 143px;
 	background-color: #222;
 }
 .banner {
 	background: url(../img/banner.jpg) no-repeat;
+	background-size: 100%;
 	-webkit-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	-moz-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
