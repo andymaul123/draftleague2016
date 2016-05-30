@@ -9,42 +9,77 @@ h1, h2, h3, h4, p, label {
   padding: 40px 15px;
   text-align: center;
 }
-.banner, .footer {
-	min-height: 150px;
-	max-height: 150px;
-	height: 100%;
+.banner img {
+	height: auto;
 	max-width: 100%;
-	min-width: 1px;
-	width: 100%;
-	background-color: #222;
-}
-.banner {
-	background: url(../img/banner.jpg) no-repeat;
-	background-size: 100%;
 	-webkit-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	-moz-box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 	box-shadow: 0 8px 6px -6px #000, 0 -8px 6px -6px #000;
 }
-.navbar {
-	border-radius: 0;
-	margin-bottom: 0;
-	border: none;
-	margin-top: 10px;
-	min-height: 40px;
+@media(min-width: 1px) {
+	.banner img.desktop {
+		display: none;
+	}
+	.banner img.mobile {
+		display: block;
+	}
 }
-ul.nav li {
-	margin-right: 35px;
+@media(min-width: 801px) {
+	.banner img.desktop {
+		display: block;
+	}
+	.banner img.mobile {
+		display: none;
+	}
 }
-ul.nav li a {
-	color: #fff;
-	padding: 10px 0 5px 0;
-	font-size: 18px;
-	text-transform: uppercase;
+
+@media(min-width: 1px){
+	.navbar {
+		border-radius: 0;
+		border: none;
+		min-height: 40px;
+		margin: 0;
+	}
+	ul.nav {
+		margin: 10px 0 0 0;
+	}
+	ul.nav li {
+		width: 30%;
+		display: inline-block;
+		margin: 0;
+	}
+	ul.nav li a {
+		color: #fff;
+		padding: 10px 0 0 0;
+		font-size: 14px;
+		text-transform: uppercase;
+		width: auto;
+	}
+	ul.nav li a:hover {
+		background-color: transparent;
+	}
+
 }
-ul.nav li a:hover {
-	border-bottom: 2px solid #5cb85c;
-	padding-bottom: 3px;
-	background-color: transparent;
+@media(min-width: 768px){
+	.navbar {
+		margin-bottom: 0;
+		margin-top: 10px;
+	}
+	ul.nav li {
+		margin-right: 35px;
+		width: auto;
+	}
+	ul.nav li a {
+		color: #fff;
+		padding: 10px 0 5px 0;
+		font-size: 18px;
+		text-transform: uppercase;
+	}
+	ul.nav li a:hover {
+		border-bottom: 2px solid #5cb85c;
+		padding-bottom: 3px;
+		background-color: transparent;
+	}
 }
 .radio-btn {
 	display: inline-block;
@@ -86,6 +121,19 @@ ul.nav li a:hover {
 	font-size: 18px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+@media(max-width: 992px) {
+	.roster-block {
+		margin-bottom: 35px;
+	}
+	.roster-block .row {
+		text-align: center;
+	}
+	.circular {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 table {
 	color: #fff;
