@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var retrievedData,
+      cards;
   // var dropdowns = function () {
   // 	console.log("init");
   //   var $hiddenFields = $('form').find('.hidden-select'),
@@ -17,8 +19,38 @@ $(document).ready(function(){
   //   });
   // };
 
+var typeaheadLaunch = function(){
+  if($('body').hasClass('draft')){
+    console.log("Typeahead is launching...");
+    var substringMatcher = function(strs) {
+      return function findMatches(q, cb) {
+        var matches, substringRegex;
+        matches = [];
+        substrRegex = new RegExp(q, 'i');
+        $.each(strs, function(i, str) {
+          if (substrRegex.test(str)) {
+            matches.push(str);
+          }
+        });
+
+        cb(matches);
+      };
+    };
+    retrievedData = localStorage.getItem("mtgjsonLocation");
+    cards = JSON.parse(retrievedData);
+    $('#the-basics .typeahead').typeahead({
+      hint: false,
+      highlight: true,
+      minLength: 1
+    },
+    {
+      name: 'cards',
+      source: substringMatcher(cards)
+    });
+  }
+}
+
   $('.radio-btn input').click(function(){
-    console.log('clicked');
     $(document).find('.radio-btn').each(function(){
       $(this).removeClass('radio-active');
     });
@@ -27,7 +59,7 @@ $(document).ready(function(){
 
 //Loads mtgjson object to client side for typeahead.js to reference
     var needRefresh = false;
-    var mtgjsonLocation = "json/onecard.json";
+    var mtgjsonLocation = "http://andrewmaul.com/fun/draftleague2016/js/json/allcards.json";
 
 
     if(localStorage.getItem('mtgjsonLocation')==null){
@@ -38,58 +70,24 @@ $(document).ready(function(){
       $.getJSON(mtgjsonLocation, function( data ) {
               var localjson=[];
               for (var key in data){
-                // if(data[key].name && data[key].value){
-                  // if(data[key].variantslist){
-                  //   variantsArray = data[key].variantslist;
-                  //   variantsString = variantsArray.toString();
-                  // }
-                  // else {
-                  //   variantsString = '';
-                  // }
-                  localjson.push({
-                    name: data[key].name,
-                  });
-                // }
+                  localjson.push(data[key].name);
               }
               localStorage.setItem('mtgjsonLocation', JSON.stringify(localjson));
+              retrievedData = localStorage.getItem("mtgjsonLocation");
+              if(retrievedData != null){
+                //initialize typeahead
+                typeaheadLaunch();
+              }
       });
+    }else {
+      typeaheadLaunch();
     }
-if($('body').hasClass('draft')){
-  // Typeahead Prefetch for MTG Json 
-
-  // var onecard = new Bloodhound({
-  //   datumTokenizer: Bloodhound.tokenizers.whitespace,
-  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  //   prefetch: '../draftleague2016/js/json/onecard.json'
-  // });
-
-  // $('#prefetch .typeahead').typeahead({
-  //   hint: false,
-  //   highlight: true,
-  //   minLength: 1
-  // }, {
-  //   name: 'onecard',
-  //   source: onecard
-  // });
-
-  // var inputLength = $('#form-card').outerWidth();
-  // $('.tt-dataset').css('width', inputLength);
-
-  // $( window ).resize(function() {
-  //   inputLength = $('#form-card').outerWidth();
-  //   $('.tt-dataset').css('width', inputLength);
-  // });
-  
-  // $(window).on("orientationchange",function(){
-  //   inputLength = $('#form-card').outerWidth();
-  //   $('.tt-dataset').css('width', inputLength);
-  // });
-}
 
 
 
 
-//dropdowns();
+
+
 
 
 

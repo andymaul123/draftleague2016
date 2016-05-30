@@ -139,6 +139,7 @@ span.draft-header {
 }
 .form-control {
 	width: 80%;
+	color: #F4F9A5;
 }
 input[type=text] {
 	background-color: #222;
@@ -156,6 +157,15 @@ span.twitter-typeahead {
 .tt-suggestion {
 	margin-top: 2px;
 	margin-bottom: 2px;
+}
+.tt-menu.tt-open {
+	width: 500px;
+	background-color: #222;
+	color: #fff;
+	border: 1px solid #fff;
+}
+.tt-dataset {
+	background-color: transparent;
 }
 .well {
 	background-color: transparent;

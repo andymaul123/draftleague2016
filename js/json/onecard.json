@@ -1,34 +1,18 @@
-
-
-    {
-               "name" : "Sen Triplets",
-
-           "manaCost" : "{2}{W}{U}{B}",
-                "cmc" : 5,
-             "colors" : ["White", "Blue", "Black"],
-
-               "type" : "Legendary Artifact Creature — Human Wizard",
-         "supertypes" : ["Legendary"],
-              "types" : ["Artifact", "Creature"],
-           "subtypes" : ["Human", "Wizard"],
-
-             "rarity" : "Mythic Rare",
-
-               "text" : "At the beginning of your upkeep, choose target opponent.
-                         This turn, that player can't cast spells or activate
-                         abilities and plays with his or her hand revealed.
-                         You may play cards from that player's hand this turn.",
-
-             "flavor" : "They are the masters of your mind.",
-
-             "artist" : "Greg Staples",
-             "number" : "109",
-
-              "power" : "3",
-          "toughness" : "3",
-
-             "layout" : "normal",
-       "multiverseid" : 180607,
-          "imageName" : "sen triplets",
-                 "id" : "3129aee7f26a4282ce131db7d417b1bc3338c4d4"
-    }
+{
+	"Air Elemental":{
+		"layout":"normal",
+		"name":"Air Elemental",
+		"manaCost":"{3}{U}{U}",
+		"cmc":5,
+		"colors":["Blue"],
+		"type":"Creature â€” Elemental",
+		"types":["Creature"],
+		"subtypes":["Elemental"],
+		"text":"Flying",
+		"power":"4",
+		"toughness":"4",
+		"imageName":"air elemental",
+		"printings":["LEA","LEB","2ED","CED","CEI","3ED","4ED","5ED","PO2","6ED","S99","BRB","BTD","7ED","8ED","9ED","10E","DD2","M10","DPA","ME4","DD3_JVC"],
+		"legalities":[{"format":"Commander","legality":"Legal"},{"format":"Freeform","legality":"Legal"},{"format":"Legacy","legality":"Legal"},{"format":"Modern","legality":"Legal"},{"format":"Prismatic","legality":"Legal"},{"format":"Singleton 100","legality":"Legal"},{"format":"Tribal Wars Legacy","legality":"Legal"},{"format":"Vintage","legality":"Legal"}],
+		"colorIdentity":["U"]}
+}
