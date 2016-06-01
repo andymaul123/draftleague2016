@@ -47,66 +47,18 @@
           <h3>Time Since Last Pick: 40mins</h3>
           <h3>On Deck: Michael</h3>
           <form>
-<!--             <div class="form-group">
-                <div class="dropdown">
-                  <label>Select Drafter</label>
-                  <div data-toggle="dropdown" data-field="state" class="form-control selected">Player</div>
-                  <div class="dropdown-menu" data-field="state">
-                    <ul>
-                      <li data-value="alex">Alex</li>
-                      <li data-value="andy">Andy</li>
-                      <li data-value="blake">Blake</li>
-                      <li data-value="brendan">Brendan</li>
-                      <li data-value="hopper">"Hopper"</li>
-                      <li data-value="justin">Justin</li>
-                      <li data-value="michael">Michael</li>
-                      <li data-value="rikki">Rikki</li>
-                    </ul>
-                  </div>
-                  <span class="message"></span>
-                  <input type="hidden" name="state" data-field="state" class="hidden-select"/>
-                </div>       
-            </div> -->
-            <div class="form-group" style="width: 60%">
-              <label for="form-player">Select Drafter</label>
-              <br />
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="andy">Andy</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="alex">Alex</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="blake">Blake</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="brendan">Brendan</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="hopper">Hopper</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="justin">Justin</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="michael">Michael</label>
-              </div>
-              <div class="radio radio-btn">
-                <label><input type="radio" name="optradio" value="rikki">Rikki</label>
-              </div>
-            </div>
             <div class="form-group" id="the-basics">
               <label for="form-card">Choose Card</label>
               <input type="text" class="form-control typeahead" id="form-card" placeholder="Enter card name">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" id="card-submit">Submit</button>
           </form>
         </div>
         <div class="col-md-4">
           <h1>Draft Feed</h1>
             <p>Latest Picks</p>
             <table class="table table-striped" id="feed-table">
-              <tr>
+<!--               <tr>
                 <td><span class="draft-player">Brendan</span> drafted <span class="draft-card">Sol Ring</span> at 14:21</td>
               </tr>
               <tr>
@@ -114,7 +66,7 @@
               </tr>
               <tr>
                 <td><span class="draft-player">Blake</span> drafted <span class="draft-card">Path to Exile</span> at 11:15</td>
-              </tr>
+              </tr> -->
             </table>
         </div>       
       </div>
