@@ -276,6 +276,20 @@ span.twitter-typeahead {
   overflow-y:scroll;
 }
 
-#cardSubmissionModal * h4{
-  color: #000000;
+.modal-content {
+	background-color: #222;
+	color: #fff;
+}
+.modal-header {
+	text-align: center;
+}
+.modal-header h2{
+	color: #fff;
+}
+.modal-header .close {
+	color: #ccc;
+	opacity: 1;
+}
+.modal-footer {
+	border: none;
 }

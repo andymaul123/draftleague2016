@@ -110,7 +110,7 @@ var returnPlayer = function(){
           console.log("returnPlayer success");
              dataObject = response;
              updateDataObjectElements();
-             notifyNextPlayer();
+             //notifyNextPlayer();
              clearForm();
              $("#cardSubmissionModal").modal('hide');
          },
@@ -204,17 +204,16 @@ function catchInput(){
     $('#picked-alert').hide();
 
     if(cardInBanList(chosenCardString)) {
-      //console.log("banned");
       $('#ban-alert .alert-message').html("<strong>" + chosenCardString + "</strong>" + " is banned. Please pick again.");
       $('#ban-alert').show();
+      $('#form-card').val('');
     }
     else if(cardAlreadyPicked(chosenCardString)){
-      //console.log("already picked");
       $('#picked-alert .alert-message').html("<strong>" + chosenCardString + "</strong>" + " has already been chosen. Please pick again.");
       $('#picked-alert').show();
+      $('#form-card').val('');
     }
     else {
-      console.log("Succes!");
       setupConfirmationModal();
       loadJSONData();
     }
@@ -223,20 +222,20 @@ function catchInput(){
   $('#cardSubmissionModalConfirmationButton').on('click', function(e){
     e.preventDefault();
 
-    var chosenCardString = $('#form-card').val();
+    chosenCardString = $('#form-card').val();
 
     console.log('We confirmed & are picking: ' + chosenCardString);
 
     $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
-    clearTimeout(modalTimeOutFunction);
+    //clearTimeout(modalTimeOutFunction);
     saveSelectedCard(chosenCardString);
     returnPlayer();
   });
 }
 
-var modalTimeOutFunction;
+//var modalTimeOutFunction;
 function setupConfirmationModal(){
-  clearTimeout(modalTimeOutFunction);
+  //clearTimeout(modalTimeOutFunction);
 
   $('#cardSubmissionModal').modal();
 
@@ -245,19 +244,19 @@ function setupConfirmationModal(){
   $('#cardSubmissionModalConfirmationButton').addClass('disabled');
   $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
 
-  modalTimeOutFunction = setTimeout(function(){
-    $("#cardSubmissionModal").modal('hide');
-  },5000);
+  // modalTimeOutFunction = setTimeout(function(){
+  //   $("#cardSubmissionModal").modal('hide');
+  // },5000);
 }
 
 function loadModalString(){
   var chosenCardString = $('#form-card').val();
-  var modalText = dataObject[currentPlayerID].name + ' is picking ' + chosenCardString;
+  var modalText = '<span class="draft-player">' + dataObject[currentPlayerID].name + '</span> is picking <span class="draft-card">' + chosenCardString + '</span>';
 
-  $('#cardSubmissionModal .modal-title').text('Is this correct?');
+  $('#cardSubmissionModal .modal-body').text('Are you absolutely certain this is correct? Screwing up the draft has dire consequences...');
 
   if(cardAlreadyPicked(chosenCardString)){
-    modalText = 'Something went wrong, this card was already chosen. Please Try Again';
+    modalText = 'Something went wrong, this card was already chosen. Please try again';
     clearForm();
   }
   else { //Card can be picked so allow the button to be pressed
@@ -265,7 +264,7 @@ function loadModalString(){
     $('#cardSubmissionModalConfirmationButton').prop('disabled', false);
   }
 
-  $('#cardSubmissionModal .modal-body').text(modalText);
+  $('#cardSubmissionModal .modal-title').html(modalText);
 }
 
 function arrayFind(arr, fn) {
