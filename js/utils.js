@@ -4,7 +4,9 @@ var dataObject,
     notificationURL = "https://pushpad.xyz/projects/1042/notifications",
     notificationAuthToken = "ed5c3eb9e6cd1a101b728ffab3256f10",
     lastPick,
-    currentPlayerID;
+    currentPlayerID,
+    chosenCardSubmit,
+    cardValidationResult;
 
 function loadCardFeed() {
   $('#feed-table').empty();
@@ -173,24 +175,50 @@ function chosenCardObject(chosenCard){
 
   return tempObject;
 }
+
 $('#ban-alert .close').click(function(){
   $('#ban-alert').hide();
+});
+$('#picked-alert .close').click(function(){
+  $('#picked-alert').hide();
 });
 function catchInput(){
   $('#card-submit').on('click', function(e){
     e.preventDefault();
-    if( $.inArray( $('#form-card').val(), banlist ) >= 0 ) {
-      console.log("BANNED");
-      $('#ban-alert .alert-message').html("<strong>" + $('#form-card').val() + "</strong>" + " is banned. Please pick again.");
-      $('#ban-alert').show();
-    }
-    else if ($.inArray( $('#form-card').val(), banlist ) == -1 ) {
-      console.log("Proceed");
+    chosenCardSubmit = $('#form-card').val();
+    $('#ban-alert').hide();
+    $('#picked-alert').hide();
+
+    function arrayFind(arr, fn) {
+        for( var i = 0, len = arr.length; i < len; ++i ) {
+            if( fn(arr[i]) ) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-    // e.preventDefault();
-    // saveSelectedCard($('#form-card').val());
-    // returnPlayer();
+    cardValidationResult = arrayFind(dataObject.chosenCards, function(v){
+        return v.cardName === chosenCardSubmit;
+    });
+
+    if( $.inArray( chosenCardSubmit, banlist ) >= 0 ) {
+      console.log("banned");
+      $('#ban-alert .alert-message').html("<strong>" + chosenCardSubmit + "</strong>" + " is banned. Please pick again.");
+      $('#ban-alert').show();
+    }
+    else if(cardValidationResult >= 0){
+      console.log("already picked");
+      $('#picked-alert .alert-message').html("<strong>" + chosenCardSubmit + "</strong>" + " has already been chosen. Please pick again.");
+      $('#picked-alert').show();
+    }
+
+    else if( ($.inArray( chosenCardSubmit, banlist ) == -1) && (cardValidationResult == -1) ) {
+      console.log("Succes!");
+      saveSelectedCard(chosenCardSubmit);
+      returnPlayer();
+    }
+
   });
 }
 

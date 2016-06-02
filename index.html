@@ -42,10 +42,11 @@
         </div>
       </nav>
       <div class="row">
-        <div class="col-md-8 rightBordered">
+        <div class="col-md-7 rightBordered">
           <h1>Current Player: <span id='current-player-label'>Loading...</span></h1>
           <h3>Time Since Last Pick: 40mins</h3>
-          <div class="alert alert-warning alert-dismissible fade in" id="ban-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
+          <div class="alert alert-danger alert-dismissible fade in" id="ban-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
+          <div class="alert alert-warning alert-dismissible fade in" id="picked-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
           <form>
             <div class="form-group" id="the-basics">
               <label for="form-card">Choose Card</label>
@@ -54,7 +55,7 @@
             <button type="submit" class="btn btn-success" id="card-submit">Submit</button>
           </form>
         </div>
-        <div class="col-md-4" id="feed-table-div">
+        <div class="col-md-5" id="feed-table-div">
           <h1>Latest Picks</h1>
             <table class="table table-striped" id="feed-table">
             </table>
