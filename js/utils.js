@@ -38,7 +38,7 @@ var createPlayerCardList = function(playerName, cards){
 var addPlayer = function(playerData){
     createPlayerCardList(playerData.name,playerData.cards);
     $('#card-count-' + playerData.name.toLowerCase()).text(playerData.cards.length);
-    console.log("addPlayer: " + playerData.name + " function ran successfully");
+    //console.log("addPlayer: " + playerData.name + " function ran successfully");
 };
 
 var loadPlayers = function(){
@@ -112,6 +112,7 @@ var returnPlayer = function(){
              updateDataObjectElements();
              notifyNextPlayer();
              clearForm();
+             $("#cardSubmissionModal").modal('hide');
          },
          failure: function(response){
             console.log('Well Return Player failed... bad stuff');
@@ -194,77 +195,126 @@ $('#ban-alert .close').click(function(){
 $('#picked-alert .close').click(function(){
   $('#picked-alert').hide();
 });
+
 function catchInput(){
   $('#card-submit').on('click', function(e){
     e.preventDefault();
-    chosenCardSubmit = $('#form-card').val();
+    chosenCardString = $('#form-card').val();
     $('#ban-alert').hide();
     $('#picked-alert').hide();
 
-    function arrayFind(arr, fn) {
-        for( var i = 0, len = arr.length; i < len; ++i ) {
-            if( fn(arr[i]) ) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    cardValidationResult = arrayFind(dataObject.chosenCards, function(v){
-        return v.cardName === chosenCardSubmit;
-    });
-
-    if( $.inArray( chosenCardSubmit, banlist ) >= 0 ) {
-      console.log("banned");
-      $('#ban-alert .alert-message').html("<strong>" + chosenCardSubmit + "</strong>" + " is banned. Please pick again.");
+    if(cardInBanList(chosenCardString)) {
+      //console.log("banned");
+      $('#ban-alert .alert-message').html("<strong>" + chosenCardString + "</strong>" + " is banned. Please pick again.");
       $('#ban-alert').show();
     }
-    else if(cardValidationResult >= 0){
-      console.log("already picked");
-      $('#picked-alert .alert-message').html("<strong>" + chosenCardSubmit + "</strong>" + " has already been chosen. Please pick again.");
+    else if(cardAlreadyPicked(chosenCardString)){
+      //console.log("already picked");
+      $('#picked-alert .alert-message').html("<strong>" + chosenCardString + "</strong>" + " has already been chosen. Please pick again.");
       $('#picked-alert').show();
     }
-
-    else if( ($.inArray( chosenCardSubmit, banlist ) == -1) && (cardValidationResult == -1) ) {
+    else {
       console.log("Succes!");
-      saveSelectedCard(chosenCardSubmit);
-      returnPlayer();
+      setupConfirmationModal();
+      loadJSONData();
     }
-
   });
+
+  $('#cardSubmissionModalConfirmationButton').on('click', function(e){
+    e.preventDefault();
+
+    var chosenCardString = $('#form-card').val();
+
+    console.log('We confirmed & are picking: ' + chosenCardString);
+
+    $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
+    clearTimeout(modalTimeOutFunction);
+    saveSelectedCard(chosenCardString);
+    returnPlayer();
+  });
+}
+
+var modalTimeOutFunction;
+function setupConfirmationModal(){
+  clearTimeout(modalTimeOutFunction);
+
+  $('#cardSubmissionModal').modal();
+
+  $('#cardSubmissionModal .modal-body').text('Loading...');
+  $('#cardSubmissionModal .modal-title').text('Loading...');
+  $('#cardSubmissionModalConfirmationButton').addClass('disabled');
+  $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
+
+  modalTimeOutFunction = setTimeout(function(){
+    $("#cardSubmissionModal").modal('hide');
+  },5000);
+}
+
+function loadModalString(){
+  var chosenCardString = $('#form-card').val();
+  var modalText = dataObject[currentPlayerID].name + ' is picking ' + chosenCardString;
+
+  $('#cardSubmissionModal .modal-title').text('Is this correct?');
+
+  if(cardAlreadyPicked(chosenCardString)){
+    modalText = 'Something went wrong, this card was already chosen. Please Try Again';
+    clearForm();
+  }
+  else { //Card can be picked so allow the button to be pressed
+    $('#cardSubmissionModalConfirmationButton').removeClass('disabled');
+    $('#cardSubmissionModalConfirmationButton').prop('disabled', false);
+  }
+
+  $('#cardSubmissionModal .modal-body').text(modalText);
+}
+
+function arrayFind(arr, fn) {
+    for( var i = 0, len = arr.length; i < len; ++i ) {
+        if( fn(arr[i]) ) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function cardInBanList(cardToCheck){
+  if( $.inArray( chosenCardString, banlist ) >= 0 ) {
+    return true;
+  }
+
+  return false;
+}
+
+function cardAlreadyPicked(cardToCheck){
+  cardValidationResult = arrayFind(dataObject.chosenCards, function(v){
+      return v.cardName === cardToCheck;
+  });
+
+  if(cardValidationResult >= 0){
+    return true;
+  }
+
+  return false;
 }
 
 function updateDataObjectElements(){
   loadPlayers();
   loadCardFeed();
+  loadModalString();
 }
 
-$(document).ready(function(){
+function loadJSONData(){
   $.ajax({
       url: serviceURL
   }).then(function(data) {
       dataObject = data;
-      console.log("initialize success! Data...");
-      console.log(data);
       updateDataObjectElements();
   });
+}
 
+$(document).ready(function(){
+  loadJSONData();
   catchInput();
-
-  // $('#card-submit').on('click', function(e){
-  //     // var selectedVal = "";
-  //     // var selected = $("#playerSelection input[type='radio']:checked");
-  //     // if (selected.length > 0) {
-  //     //     selectedVal = selected.val();
-  //     // }
-  //     event.preventDefault();
-  //     selectedVal = "player1";
-  //
-  //     lastPick = dataObject[selectedVal].name + " picked " + $('#form-card').val();
-  //
-  //     dataObject[selectedVal].cards.push($('#card-input').val());
-  //     returnPlayer();
-  // });
 
   var retrievedData,
       cards;
@@ -298,14 +348,7 @@ $(document).ready(function(){
         source: substringMatcher(cards)
       });
     }
-  }
-
-  // $('.radio-btn input').click(function(){
-  //   $(document).find('.radio-btn').each(function(){
-  //     $(this).removeClass('radio-active');
-  //   });
-  //   $(this).parents('.radio-btn').addClass('radio-active');
-  // })
+  };
 
 //Loads mtgjson object to client side for typeahead.js to reference
     var needRefresh = false;
@@ -332,13 +375,4 @@ $(document).ready(function(){
     }else {
       typeaheadLaunch();
     }
-
-
-
-
-
-
-
-
-
 });

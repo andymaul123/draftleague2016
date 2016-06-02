@@ -275,3 +275,7 @@ span.twitter-typeahead {
 	height:250px;
   overflow-y:scroll;
 }
+
+#cardSubmissionModal * h4{
+  color: #000000;
+}
