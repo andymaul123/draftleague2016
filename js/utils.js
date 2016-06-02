@@ -1,37 +1,53 @@
 
-var count = 0,
-    dataObject,
+var dataObject,
     serviceURL = "https://jsonblob.com/api/jsonBlob/574c63aae4b01190df708c1e",
     notificationURL = "https://pushpad.xyz/projects/1042/notifications",
     notificationAuthToken = "ed5c3eb9e6cd1a101b728ffab3256f10",
     lastPick,
     currentPlayerID;
 
-var addCardToList = function(card){
-    $('#feed-table tbody').append('<tr><td>' + card + '</tr></td>');
-    count++;
-};
+function loadCardFeed() {
+  $('#feed-table').empty();
+  for(var i = dataObject.chosenCards.length-1; i > -1; --i){
+    addCardToList(dataObject.chosenCards[i]);
+  }
+}
+
+function addCardToList(cardInfo) {
+    var dateTime = new Date(cardInfo.pickTime).toLocaleString();
+    dateTime = dateTime.replace('/2016, ', ' at ');
+    var cardText = cardInfo.player + ' picked ' + cardInfo.cardName + ' on ' + dateTime;
+    $('#feed-table').append('<tr><td>' + cardText + '</tr></td>');
+}
 
 var createPlayerCardList = function(playerName, cards){
+    var tableID = 'decklist-';
+    tableID += playerName.toLowerCase();
+
+    $('#' + tableID + ' .table').empty();
     cards.forEach(function(card){
-        // $('#'+ playerName).append('<li>' + card + '</li>');
-        console.log("createPlayerCardList function ran successfully");
+        $('#' + tableID + ' .table').append('<tr><td><span class="draft-card">' + card + '</span></tr></td>');
     });
 };
 
 var addPlayer = function(playerData){
-    // $('.data').append(playerData.name);
-    // $('.data').append("<ul id="+playerData.name+"></ul>");
     createPlayerCardList(playerData.name,playerData.cards);
-    console.log("addPlayer function ran successfully");
+    $('#card-count-' + playerData.name.toLowerCase()).text(playerData.cards.length);
+    console.log("addPlayer: " + playerData.name + " function ran successfully");
 };
 
 var loadPlayers = function(){
     updateTurnBasedPlayerLabels();
-    // $('.data').empty();
-    // addPlayer(groupData.player1);
-    // addPlayer(groupData.player2);
-    // addPlayer(groupData.player3);
+
+    addPlayer(dataObject.player1);
+    addPlayer(dataObject.player2);
+    addPlayer(dataObject.player3);
+    addPlayer(dataObject.player4);
+    addPlayer(dataObject.player5);
+    addPlayer(dataObject.player6);
+    addPlayer(dataObject.player7);
+    addPlayer(dataObject.player8);
+
     console.log("loadPlayers function ran successfully");
 };
 
@@ -79,7 +95,7 @@ var returnPlayer = function(){
         success: function(response) {
           console.log("returnPlayer success");
              dataObject = response;
-             loadPlayers();
+             updateDataObjectElements();
              notifyNextPlayer();
              clearForm();
          },
@@ -178,6 +194,11 @@ function catchInput(){
   });
 }
 
+function updateDataObjectElements(){
+  loadPlayers();
+  loadCardFeed();
+}
+
 $(document).ready(function(){
   $.ajax({
       url: serviceURL
@@ -185,7 +206,7 @@ $(document).ready(function(){
       dataObject = data;
       console.log("initialize success! Data...");
       console.log(data);
-      loadPlayers();
+      updateDataObjectElements();
   });
 
   catchInput();
