@@ -7,10 +7,6 @@ var count = 0,
     lastPick,
     currentPlayerID;
 
-var getNextPlayer = function(){
-
-};
-
 var addCardToList = function(card){
     $('#feed-table tbody').append('<tr><td>' + card + '</tr></td>');
     count++;
