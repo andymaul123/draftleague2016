@@ -1,10 +1,11 @@
-  
+
 var count = 0,
     dataObject,
     serviceURL = "https://jsonblob.com/api/jsonBlob/574c63aae4b01190df708c1e",
     notificationURL = "https://pushpad.xyz/projects/1042/notifications",
     notificationAuthToken = "ed5c3eb9e6cd1a101b728ffab3256f10",
-    lastPick;
+    lastPick,
+    currentPlayerID;
 
 var addCardToList = function(card){
     $('#feed-table tbody').append('<tr><td>' + card + '</tr></td>');
@@ -25,7 +26,8 @@ var addPlayer = function(playerData){
     console.log("addPlayer function ran successfully");
 };
 
-var loadPlayers = function(groupData){
+var loadPlayers = function(){
+    updateTurnBasedPlayerLabels();
     // $('.data').empty();
     // addPlayer(groupData.player1);
     // addPlayer(groupData.player2);
@@ -33,7 +35,42 @@ var loadPlayers = function(groupData){
     console.log("loadPlayers function ran successfully");
 };
 
+var updateTurnBasedPlayerLabels = function(){
+    currentPlayerID = dataObject.misc.turnOrder[dataObject.misc.turnIndex];
+    $('#current-player-label').text(dataObject[currentPlayerID].name);
+};
+
+var goToNextTurn = function(i){
+  if(dataObject.misc.countingUp){
+    dataObject.misc.turnIndex++;
+  }
+  else {
+    dataObject.misc.turnIndex--;
+  }
+
+  //If we've reached the end of the array start counting down
+  if(dataObject.misc.turnIndex >= dataObject.misc.turnOrder.length) {
+    dataObject.misc.countingUp = false;
+    dataObject.misc.turnIndex--;
+    //console.log(' SNAKE FOR ' + dataObject.misc.turnOrder[dataObject.misc.turnIndex]);
+  }
+  //If we've reached the bottom of the array, move players & start counting up
+  else if(dataObject.misc.turnIndex < 0) {
+    var firstPick = dataObject.misc.turnOrder[0];
+    dataObject.misc.turnOrder.splice(0,1);
+    dataObject.misc.turnOrder.push(firstPick);
+    dataObject.misc.countingUp = true;
+    dataObject.misc.turnIndex = 0;
+    dataObject.misc.roundNumber++;
+    //console.log('NEXT ROUND ' + dataObject.misc.turnOrder);
+  }
+
+  dataObject.misc.pickNumber++;
+};
+
 var returnPlayer = function(){
+    //Advance Turn Order before returning dataObject
+    goToNextTurn();
     //SEND THE PLAYER DATA BACK & RELOAD IT
     $.ajax({
         type: 'PUT',
@@ -41,9 +78,13 @@ var returnPlayer = function(){
         data: JSON.stringify(dataObject),
         success: function(response) {
           console.log("returnPlayer success");
-             loadPlayers(response);
+             dataObject = response;
+             loadPlayers();
              notifyNextPlayer();
              clearForm();
+         },
+         failure: function(response){
+            console.log('Well Return Player failed... bad stuff');
          },
         contentType: "application/json",
         dataType: 'json'
@@ -63,7 +104,9 @@ var notifyNextPlayer = function(){
     $.ajax({
         type: 'POST',
         url: notificationURL,
+        crossDomain: true,
         data: JSON.stringify(notificationData),
+        dataType: 'json',
         headers: {
             'Access-Control-Allow-Origin' : "*",
             'Authorization': 'Token token="' + notificationAuthToken + '"',
@@ -100,10 +143,10 @@ $(document).ready(function(){
   $.ajax({
       url: serviceURL
   }).then(function(data) {
+      dataObject = data;
       console.log("initialize success! Data...");
       console.log(data);
-      loadPlayers(data);
-      dataObject = data;
+      loadPlayers();
   });
 
   $('#card-submit').on('click', function(e){
@@ -170,19 +213,19 @@ $(document).ready(function(){
     if(localStorage.getItem('mtgjsonLocation')==null){
       needRefresh = true;
     }
-    
+
     if(needRefresh){
       $.getJSON(mtgjsonLocation, function( data ) {
-              // var localjson=[];
-              // for (var key in data){
-              //     localjson.push(data[key].name);
-              // }
-              localStorage.setItem('mtgjsonLocation', JSON.stringify(data));
-              retrievedData = localStorage.getItem("mtgjsonLocation");
-              if(retrievedData != null){
-                //initialize typeahead
-                typeaheadLaunch();
-              }
+          // var localjson=[];
+          // for (var key in data){
+          //     localjson.push(data[key].name);
+          // }
+          localStorage.setItem('mtgjsonLocation', JSON.stringify(data));
+          retrievedData = localStorage.getItem("mtgjsonLocation");
+          if(retrievedData != null){
+            //initialize typeahead
+            typeaheadLaunch();
+          }
       });
     }else {
       typeaheadLaunch();
