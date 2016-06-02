@@ -118,13 +118,12 @@ var notifyNextPlayer = function(){
         success: function(response) {
             console.log(response);
         },
-        contentType: "application/jsonp",
-        dataType: 'json'
+        contentType: "application/jsonp"
     });
 };
 
 var clearForm = function(){
-    // $('#card-input').val('');
+    $('#form-card').val('');
     console.log("clearForm function ran successfully");
 };
 
@@ -139,6 +138,35 @@ var notificationUrls = {
   "player8" : "https://pushpad.xyz/projects/1042/subscription/edit?uid=08&uid_signature=7cf6dbdab24fcab6c2d017a4eb52986c2586223d",
 };
 
+function saveSelectedCard(cardToSave){
+  lastPick = dataObject[currentPlayerID].name + " picked " + cardToSave;
+
+  dataObject[currentPlayerID].cards.push(cardToSave);
+
+  dataObject.chosenCards.push(chosenCardObject(cardToSave));
+}
+
+function chosenCardObject(chosenCard){
+  var tempObject = {
+    "cardName" : chosenCard,
+    "player" : dataObject[currentPlayerID].name,
+    "pickNumber" : dataObject.misc.pickNumber,
+    "pickTime" : Date.now()
+  };
+
+  return tempObject;
+}
+
+function catchInput(){
+  $('#card-submit').on('click', function(e){
+    e.preventDefault();
+
+    saveSelectedCard($('#form-card').val());
+
+    returnPlayer();
+  });
+}
+
 $(document).ready(function(){
   $.ajax({
       url: serviceURL
@@ -149,20 +177,22 @@ $(document).ready(function(){
       loadPlayers();
   });
 
-  $('#card-submit').on('click', function(e){
-      // var selectedVal = "";
-      // var selected = $("#playerSelection input[type='radio']:checked");
-      // if (selected.length > 0) {
-      //     selectedVal = selected.val();
-      // }
-      event.preventDefault();
-      selectedVal = "player1";
+  catchInput();
 
-      lastPick = dataObject[selectedVal].name + " picked " + $('#form-card').val();
-
-      dataObject[selectedVal].cards.push($('#card-input').val());
-      returnPlayer();
-  });
+  // $('#card-submit').on('click', function(e){
+  //     // var selectedVal = "";
+  //     // var selected = $("#playerSelection input[type='radio']:checked");
+  //     // if (selected.length > 0) {
+  //     //     selectedVal = selected.val();
+  //     // }
+  //     event.preventDefault();
+  //     selectedVal = "player1";
+  //
+  //     lastPick = dataObject[selectedVal].name + " picked " + $('#form-card').val();
+  //
+  //     dataObject[selectedVal].cards.push($('#card-input').val());
+  //     returnPlayer();
+  // });
 
   var retrievedData,
       cards;

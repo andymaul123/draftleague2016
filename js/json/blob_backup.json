@@ -1,0 +1,51 @@
+{
+  "player1": {
+    "name": "Blake",
+    "cards": []
+  },
+  "player2": {
+    "name": "Brendan",
+    "cards": []
+  },
+  "player3": {
+    "name": "Rikki",
+    "cards": []
+  },
+  "player4": {
+    "name": "Hopper",
+    "cards": []
+  },
+  "player5": {
+    "name": "Justin",
+    "cards": []
+  },
+  "player6": {
+    "name": "Andy",
+    "cards": []
+  },
+  "player7": {
+    "name": "Michael",
+    "cards": []
+  },
+  "player8": {
+    "name": "Alex",
+    "cards": []
+  },
+  "misc": {
+    "turnOrder": [
+      "player8",
+      "player7",
+      "player6",
+      "player5",
+      "player4",
+      "player3",
+      "player2",
+      "player1"
+    ],
+    "turnIndex": 0,
+    "pickNumber": 0,
+    "roundNumber": 0,
+    "countingUp": true
+  },
+  "chosenCards": []
+}
