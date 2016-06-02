@@ -6,7 +6,10 @@ var dataObject,
     lastPick,
     currentPlayerID,
     chosenCardSubmit,
-    cardValidationResult;
+    cardValidationResult,
+    getLastTime,
+    updatedTime,
+    hours;
 
 function loadCardFeed() {
   $('#feed-table').empty();
@@ -18,7 +21,7 @@ function loadCardFeed() {
 function addCardToList(cardInfo) {
     var dateTime = new Date(cardInfo.pickTime).toLocaleString();
     dateTime = dateTime.replace('/2016, ', ' at ');
-    var cardText = cardInfo.player + ' picked ' + cardInfo.cardName + ' on ' + dateTime;
+    var cardText = '<span class="draft-player">' + cardInfo.player + '</span>' + ' picked ' + '<span class="draft-card">' + cardInfo.cardName + '</span>' + ' on ' + dateTime;
     $('#feed-table').append('<tr><td>' + cardText + '</tr></td>');
 }
 
@@ -56,8 +59,17 @@ var loadPlayers = function(){
 var updateTurnBasedPlayerLabels = function(){
     currentPlayerID = dataObject.misc.turnOrder[dataObject.misc.turnIndex];
     $('#current-player-label').text(dataObject[currentPlayerID].name);
+    updateLastPickTime();
 };
+var updateLastPickTime = function() {
+    console.log(dataObject.chosenCards.length);
+    getLastTime = dataObject.chosenCards[dataObject.chosenCards.length -1].pickTime;
+    updatedTime = (Date.now() - getLastTime);
+    hours = (updatedTime / (1000 * 60 * 60)).toFixed(1);
 
+
+    $('#timer').html("It has been " + hours + " hours since the last pick.");
+}
 var goToNextTurn = function(i){
   if(dataObject.misc.countingUp){
     dataObject.misc.turnIndex++;
