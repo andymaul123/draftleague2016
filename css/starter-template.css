@@ -251,3 +251,9 @@ span.twitter-typeahead {
 .footer {
 	margin-top: 15px;
 }
+
+#feed-table-div {
+	height:250px;
+  overflow-y:scroll;
+  margin-top:20px;
+}

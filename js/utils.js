@@ -1,16 +1,24 @@
 
-var count = 0,
-    dataObject,
+var dataObject,
     serviceURL = "https://jsonblob.com/api/jsonBlob/574c63aae4b01190df708c1e",
     notificationURL = "https://pushpad.xyz/projects/1042/notifications",
     notificationAuthToken = "ed5c3eb9e6cd1a101b728ffab3256f10",
     lastPick,
     currentPlayerID;
 
-var addCardToList = function(card){
-    $('#feed-table tbody').append('<tr><td>' + card + '</tr></td>');
-    count++;
-};
+function loadCardFeed() {
+  $('#feed-table').empty();
+  for(var i = dataObject.chosenCards.length-1; i > -1; --i){
+    addCardToList(dataObject.chosenCards[i]);
+  }
+}
+
+function addCardToList(cardInfo) {
+    var dateTime = new Date(cardInfo.pickTime).toLocaleString();
+    dateTime = dateTime.replace('/2016, ', ' at ');
+    var cardText = cardInfo.player + ' picked ' + cardInfo.cardName + ' on ' + dateTime;
+    $('#feed-table').append('<tr><td>' + cardText + '</tr></td>');
+}
 
 var createPlayerCardList = function(playerName, cards){
     cards.forEach(function(card){
@@ -79,7 +87,7 @@ var returnPlayer = function(){
         success: function(response) {
           console.log("returnPlayer success");
              dataObject = response;
-             loadPlayers();
+             updateDataObjectElements();
              notifyNextPlayer();
              clearForm();
          },
@@ -167,6 +175,11 @@ function catchInput(){
   });
 }
 
+function updateDataObjectElements(){
+  loadPlayers();
+  loadCardFeed();
+}
+
 $(document).ready(function(){
   $.ajax({
       url: serviceURL
@@ -174,7 +187,7 @@ $(document).ready(function(){
       dataObject = data;
       console.log("initialize success! Data...");
       console.log(data);
-      loadPlayers();
+      updateDataObjectElements();
   });
 
   catchInput();
