@@ -220,6 +220,11 @@ span.twitter-typeahead {
 	color: #fff;
 	border: 1px solid #fff;
 }
+@media(max-width: 400px) {
+	.tt-menu.tt-open {
+	width: 300px;
+}
+}
 .tt-dataset {
 	background-color: transparent;
 }
