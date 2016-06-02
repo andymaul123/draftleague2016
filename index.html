@@ -36,7 +36,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.html">Draft</a></li>
               <li><a href="roster.html">Roster</a></li>
-              
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -61,6 +61,24 @@
             </table>
         </div>
       </div>
+
+      <div class="modal fade" id="cardSubmissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Confirm Your Pick</h4>
+          </div>
+          <div class="modal-body" style="font-weight:bold;">
+            Loading...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left;">Cancel</button>
+            <button type="button" class="btn btn-primary" id="cardSubmissionModalConfirmationButton">Pick Card</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal -->
       <div class="footer">
         <p>Magic the Gathering, FNM is TM and copyright Wizards of the Coast, Inc, a subsidiary of Hasbro, Inc. All rights reserved. This site is unaffiliated. /legalese</p>
       </div>
