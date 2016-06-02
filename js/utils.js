@@ -138,6 +138,7 @@ var notificationUrls = {
   "player8" : "https://pushpad.xyz/projects/1042/subscription/edit?uid=08&uid_signature=7cf6dbdab24fcab6c2d017a4eb52986c2586223d",
 };
 
+var banlist = ["Ancestral Recall","Balance","Biorhythm","Black Lotus","Braids, Cabal Minion","Coalition Victory","Channel","Emrakul, the Aeons Torn","Erayo, Soratami Ascendant","Fastbond","Gifts Ungiven","Griselbrand","Karakas","Library of Alexandria","Limited Resources","Mox Sapphire","Mox Ruby", "Mox Pearl", "Mox Emerald","Mox Jet","Painter's Servant","Panoptic Mirror","Primeval Titan","Prophet of Kruphix","Protean Hulk","Recurring Nightmare","Rofellos, Llanowar Emissary","Sway of the Stars","Sundering Titan","Sylvan Primordial","Time Vault","Time Walk","Tinker","Tolarian Academy","Trade Secrets","Upheaval","Worldfire","Yawgmoth's Bargain","Advantageous Proclamation","Amulet of Quoz","Backup Plan","Brago's Favor","Bronze Tablet","Chaos Orb","Contract from Below","Darkpact","Demonic Attorney","Double Stroke","Falling Star","Immediate Action","Iterative Analysis","Jeweled Bird","Muzzio's Preparations","Power Play","Rebirth","Secret Summoning","Secrets of Paradise","Sentinel Dispatch","Shahrazad","Tempest Efreet","Timmerian Fiends","Unexpected Potential","Worldknit"];
 function saveSelectedCard(cardToSave){
   lastPick = dataObject[currentPlayerID].name + " picked " + cardToSave;
 
@@ -156,14 +157,24 @@ function chosenCardObject(chosenCard){
 
   return tempObject;
 }
-
+$('#ban-alert .close').click(function(){
+  $('#ban-alert').hide();
+});
 function catchInput(){
   $('#card-submit').on('click', function(e){
     e.preventDefault();
+    if( $.inArray( $('#form-card').val(), banlist ) >= 0 ) {
+      console.log("BANNED");
+      $('#ban-alert .alert-message').html("<strong>" + $('#form-card').val() + "</strong>" + " is banned. Please pick again.");
+      $('#ban-alert').show();
+    }
+    else if ($.inArray( $('#form-card').val(), banlist ) == -1 ) {
+      console.log("Proceed");
+    }
 
-    saveSelectedCard($('#form-card').val());
-
-    returnPlayer();
+    // e.preventDefault();
+    // saveSelectedCard($('#form-card').val());
+    // returnPlayer();
   });
 }
 

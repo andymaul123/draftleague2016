@@ -81,6 +81,10 @@ h1, h2, h3, h4, p, label {
 		background-color: transparent;
 	}
 }
+#ban-alert {
+	display: none;
+	width: 80%;
+}
 .radio-btn {
 	display: inline-block;
 	margin-right: 10px;
