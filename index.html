@@ -43,7 +43,21 @@
       </nav>
       <div class="row">
         <div class="col-md-7 rightBordered">
-          <h1>Current Player: <span id='current-player-label'>Loading...</span></h1>
+          <h1>Current Player: <span id='current-player-label' class="draft-player">Loading...</span></h1>
+          <table id="current-player-tracker" class="tracker">
+            <tbody>
+              <tr>
+                <td>Player 1</td>
+                <td>Player 2</td>
+                <td class="active">Player 3</td>
+                <td>Player 4</td>
+                <td>Player 5</td>
+                <td>Player 6</td>
+                <td>Player 7</td>
+                <td>Player 8</td>
+              </tr>
+            </tbody>
+          </table>
           <h3 id="timer"></h3>
           <div class="alert alert-danger alert-dismissible fade in" id="ban-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
           <div class="alert alert-warning alert-dismissible fade in" id="picked-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>

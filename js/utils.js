@@ -53,7 +53,7 @@ var loadPlayers = function(){
     addPlayer(dataObject.player7);
     addPlayer(dataObject.player8);
 
-    console.log("loadPlayers function ran successfully");
+    //console.log("loadPlayers function ran successfully");
 };
 
 var updateTurnBasedPlayerLabels = function(){
@@ -62,7 +62,6 @@ var updateTurnBasedPlayerLabels = function(){
     updateLastPickTime();
 };
 var updateLastPickTime = function() {
-    console.log(dataObject.chosenCards.length);
     getLastTime = dataObject.chosenCards[dataObject.chosenCards.length -1].pickTime;
     updatedTime = (Date.now() - getLastTime);
     hours = (updatedTime / (1000 * 60 * 60)).toFixed(1);
@@ -107,7 +106,7 @@ var returnPlayer = function(){
         url: serviceURL,
         data: JSON.stringify(dataObject),
         success: function(response) {
-          console.log("returnPlayer success");
+          //console.log("returnPlayer success");
              dataObject = response;
              updateDataObjectElements();
              //notifyNextPlayer();
@@ -123,7 +122,7 @@ var returnPlayer = function(){
 };
 
 var notifyNextPlayer = function(){
-    console.log(lastPick);
+    //console.log(lastPick);
     var notificationData = {
         "notification" : {
             "body": "This is a test",
@@ -147,7 +146,7 @@ var notifyNextPlayer = function(){
             console.log(response);
         },
         success: function(response) {
-            console.log(response);
+            //console.log(response);
         },
         contentType: "application/jsonp"
     });
@@ -155,7 +154,7 @@ var notifyNextPlayer = function(){
 
 var clearForm = function(){
     $('#form-card').val('');
-    console.log("clearForm function ran successfully");
+    //console.log("clearForm function ran successfully");
 };
 
 var notificationUrls = {
@@ -224,10 +223,10 @@ function catchInput(){
 
     chosenCardString = $('#form-card').val();
 
-    console.log('We confirmed & are picking: ' + chosenCardString);
+    //console.log('We confirmed & are picking: ' + chosenCardString);
 
     $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
-    //clearTimeout(modalTimeOutFunction);
+    clearTimeout(modalTimeOutFunction);
     saveSelectedCard(chosenCardString);
     returnPlayer();
   });
@@ -235,7 +234,7 @@ function catchInput(){
 
 //var modalTimeOutFunction;
 function setupConfirmationModal(){
-  //clearTimeout(modalTimeOutFunction);
+  clearTimeout(modalTimeOutFunction);
 
   $('#cardSubmissionModal').modal();
 
@@ -244,9 +243,9 @@ function setupConfirmationModal(){
   $('#cardSubmissionModalConfirmationButton').addClass('disabled');
   $('#cardSubmissionModalConfirmationButton').prop('disabled', true);
 
-  // modalTimeOutFunction = setTimeout(function(){
-  //   $("#cardSubmissionModal").modal('hide');
-  // },5000);
+  modalTimeOutFunction = setTimeout(function(){
+    $("#cardSubmissionModal").modal('hide');
+  },5000);
 }
 
 function loadModalString(){
@@ -320,7 +319,6 @@ $(document).ready(function(){
 
   var typeaheadLaunch = function(){
     if($('body').hasClass('draft')){
-      console.log("Typeahead is launching...");
       var substringMatcher = function(strs) {
         return function findMatches(q, cb) {
           var matches, substringRegex;

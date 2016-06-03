@@ -162,6 +162,30 @@ table {
 .table-striped>tbody>tr:nth-of-type(odd) td:nth-child(2) {
     background-color: transparent;
 }
+table.tracker {
+	width: 80%;
+}
+@media(max-width: 800px){
+	table.tracker {
+		width: 100%;
+	}
+}
+table.tracker td {
+	text-align: center;
+}
+table.tracker td.active {
+	border: 1px solid blue;
+	position: relative;
+}
+table.tracker .active:before {
+	width: 25%;
+	height: 25%;
+	content: '';
+	background-color: #fff;
+	position: absolute;
+	left: 38%;
+	bottom: -10px;
+}
 span.draft-player {
 	color: #2AABD2;
 }
@@ -202,6 +226,11 @@ input[type=text] {
 }
 input.typeahead {
 	width: 80%;
+}
+@media(max-width: 800px) {
+	input.typeahead {
+		width: 100%;
+	}
 }
 span.twitter-typeahead {
 	display: initial!important;
