@@ -9,7 +9,84 @@ var dataObject,
     cardValidationResult,
     getLastTime,
     updatedTime,
-    hours;
+    hours,
+    roundNumber,
+    turnOrder = [];
+
+function handleTurnOrderTable(){
+  loadCurrentTurnOrder();
+
+  $('.tracker-right').on('click', function(e){
+    e.preventDefault();
+    incrementTurnOrderTable();
+  });
+
+  $('.tracker-left').on('click', function(e){
+    e.preventDefault();
+    if(roundNumber >= 1){
+      decrementTurnOrderTable();
+    }
+  });
+
+}
+
+function loadCurrentTurnOrder() {
+  $('#current-player-tracker tr').empty();
+  turnOrder = dataObject.misc.turnOrder;
+  roundNumber = dataObject.misc.roundNumber;
+  roundNumber++;
+
+  updateRoundNumberDisplay();
+
+  for(var i = 0; i < turnOrder.length; i++){
+    if(i == dataObject.misc.turnIndex){
+      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'active');
+    }
+    else {
+      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'inactive');
+    }
+  }
+}
+
+function updateRoundNumberDisplay(){
+  $('#round-number-label').text(roundNumber);
+}
+
+function loadTurnOrderTableWithoutCurrentPlayer(){
+  for(var i = 0; i < turnOrder.length; i++){
+      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'inactive');
+  }
+}
+
+function addTurnOrderRowObject(displayText, cssClass){
+  $('#current-player-tracker tr').append('<td class=' + cssClass + '>' + displayText + '</td>');
+}
+
+function incrementTurnOrderTable(){
+  $('#current-player-tracker tr').empty();
+
+  var firstPick = turnOrder[0];
+  turnOrder.splice(0,1);
+  turnOrder.push(firstPick);
+
+  loadTurnOrderTableWithoutCurrentPlayer();
+
+  roundNumber++;
+  updateRoundNumberDisplay();
+}
+
+function decrementTurnOrderTable(){
+  $('#current-player-tracker tr').empty();
+
+  var lastPick = turnOrder[turnOrder.length-1];
+  turnOrder.splice(turnOrder.length-1,1);
+  turnOrder.unshift(lastPick);
+
+  loadTurnOrderTableWithoutCurrentPlayer();
+
+  roundNumber--;
+  updateRoundNumberDisplay();
+}
 
 function loadCardFeed() {
   $('#feed-table').empty();
@@ -22,7 +99,7 @@ function addCardToList(cardInfo) {
     var dateTime = new Date(cardInfo.pickTime).toLocaleString();
     dateTime = dateTime.replace('/2016, ', ' at ');
     var cardText = '<span class="draft-player">' + cardInfo.player + '</span>' + ' picked ' + '<span class="draft-card">' + cardInfo.cardName + '</span>' + ' on ' + dateTime;
-    $('#feed-table').append('<tr><td>' + cardText + '</tr></td>');
+    $('#feed-table').append('<tr><td>' + cardText + '</td></tr>');
 }
 
 var createPlayerCardList = function(playerName, cards){
@@ -232,7 +309,7 @@ function catchInput(){
   });
 }
 
-//var modalTimeOutFunction;
+var modalTimeOutFunction;
 function setupConfirmationModal(){
   clearTimeout(modalTimeOutFunction);
 
@@ -299,6 +376,7 @@ function updateDataObjectElements(){
   loadPlayers();
   loadCardFeed();
   loadModalString();
+  handleTurnOrderTable();
 }
 
 function loadJSONData(){
