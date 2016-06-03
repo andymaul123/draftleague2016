@@ -318,8 +318,14 @@ span.twitter-typeahead {
 	font-size: 10px;
 }
 #feed-table-div {
-	height:250px;
-  overflow-y:scroll;
+	height: 250px;
+	overflow-y: scroll;
+}
+@media(min-width: 800px) {
+	#feed-table-div {
+		height: 500px;
+		overflow-y: scroll;
+	}
 }
 
 .modal-content {
