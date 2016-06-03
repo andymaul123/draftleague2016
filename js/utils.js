@@ -139,10 +139,14 @@ var updateTurnBasedPlayerLabels = function(){
     updateLastPickTime();
 };
 var updateLastPickTime = function() {
+  if(dataObject.chosenCards.length){
     getLastTime = dataObject.chosenCards[dataObject.chosenCards.length -1].pickTime;
     updatedTime = (Date.now() - getLastTime);
     hours = (updatedTime / (1000 * 60 * 60)).toFixed(1);
-
+  }
+  else {
+    hours = 0;
+  }
 
     $('#timer').html("It has been " + hours + " hours since the last pick.");
 }
