@@ -102,9 +102,9 @@ function addCardToList(cardInfo) {
     $('#feed-table').append('<tr><td>' + cardText + '</td></tr>');
 }
 
-var createPlayerCardList = function(playerName, cards){
+var createPlayerCardList = function(playerIdentifierString, cards){
     var tableID = 'decklist-';
-    tableID += playerName.toLowerCase();
+    tableID += playerIdentifierString;
 
     $('#' + tableID + ' .table').empty();
     cards.forEach(function(card){
@@ -113,8 +113,11 @@ var createPlayerCardList = function(playerName, cards){
 };
 
 var addPlayer = function(playerData){
-    createPlayerCardList(playerData.name,playerData.cards);
-    $('#card-count-' + playerData.name.toLowerCase()).text(playerData.cards.length);
+    var playerIdentifierString = playerData.name.toLowerCase();
+    playerIdentifierString = playerIdentifierString.slice(0,-6);
+    createPlayerCardList(playerIdentifierString,playerData.cards);
+
+    $('#card-count-' + playerIdentifierString).text(playerData.cards.length);
     //console.log("addPlayer: " + playerData.name + " function ran successfully");
 };
 
