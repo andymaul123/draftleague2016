@@ -164,6 +164,16 @@ table {
 }
 table.tracker {
 	width: 80%;
+	border: none;
+	float: left;
+}
+.tracker-left {
+	background-color: #fff;
+	float: left;
+}
+.tracker-right {
+	background-color: #fff;
+	float: left;
 }
 @media(max-width: 800px){
 	table.tracker {
@@ -172,20 +182,27 @@ table.tracker {
 }
 table.tracker td {
 	text-align: center;
+	color: #ccc;
 }
 table.tracker td.active {
-	border: 1px solid blue;
+	border-bottom: 2px solid #2AABD2;
 	position: relative;
+	color: #fff;
+	font-size: 16px;
 }
 table.tracker .active:before {
-	width: 25%;
-	height: 25%;
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #2AABD2;
 	content: '';
-	background-color: #fff;
+	background-color: transparent;
 	position: absolute;
-	left: 38%;
-	bottom: -10px;
+	left: 45%;
+	bottom: -15px;
 }
+
 span.draft-player {
 	color: #2AABD2;
 }
