@@ -45,7 +45,6 @@ function loadCurrentTurnOrder() {
   else if(dataObject.misc.countingUp == false) {
     countingClass = " trackerCountDown";
   }
-  console.log(countingClass);
 
   for(var i = 0; i < turnOrder.length; i++){
     if(i == dataObject.misc.turnIndex){
