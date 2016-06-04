@@ -231,6 +231,10 @@ span.draft-header {
 		margin-top: -25px;
 	}
 }
+.deck-list .well {
+	height: 300px;
+	overflow-y: scroll;
+}
 .deck-list table {
 	text-align: left;
 }
@@ -278,11 +282,29 @@ span.twitter-typeahead {
 	background-color: transparent;
 	border: none;
 }
-.zurgo {
-	background: url(../img/zurgo.jpg) no-repeat;
+.andy {
+	background: url(../img/andy.jpg) no-repeat;
 }
-.hazezon {
-	background: url(../img/hazezon.jpg) no-repeat;
+.justin {
+	background: url(../img/justin.jpg) no-repeat;
+}
+.rikki {
+	background: url(../img/rikki.jpg) no-repeat;
+}
+.michael {
+	background: url(../img/michael.jpg) no-repeat;
+}
+.hopper {
+	background: url(../img/hopper.jpg) no-repeat;
+}
+.blake {
+	background: url(../img/blake.jpg) no-repeat;
+}
+.alex {
+	background: url(../img/alex.jpg) no-repeat;
+}
+.brendan {
+	background: url(../img/brendan.jpg) no-repeat;
 }
 .unknown {
 	background: url(../img/unknown.jpg) no-repeat;
