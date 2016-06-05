@@ -11,7 +11,8 @@ var dataObject,
     updatedTime,
     hours,
     roundNumber,
-    turnOrder = [];
+    turnOrder = [],
+    countingClass;
 
 function handleTurnOrderTable(){
   loadCurrentTurnOrder();
@@ -38,6 +39,13 @@ function loadCurrentTurnOrder() {
 
   updateRoundNumberDisplay();
 
+  if(dataObject.misc.countingUp) {
+    countingClass = " trackerCountUp";
+  }
+  else if(dataObject.misc.countingUp == false) {
+    countingClass = " trackerCountDown";
+  }
+
   for(var i = 0; i < turnOrder.length; i++){
     if(i == dataObject.misc.turnIndex){
       addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'active');
@@ -59,7 +67,7 @@ function loadTurnOrderTableWithoutCurrentPlayer(){
 }
 
 function addTurnOrderRowObject(displayText, cssClass){
-  $('#current-player-tracker tr').append('<td class=' + cssClass + '>' + displayText + '</td>');
+  $('#current-player-tracker tr').append('<td class="' + cssClass + countingClass + '">' + displayText + '</td>');
 }
 
 function incrementTurnOrderTable(){

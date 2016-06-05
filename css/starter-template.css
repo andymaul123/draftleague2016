@@ -193,16 +193,22 @@ table.tracker td.active {
 table.tracker .active:before {
 	width: 0; 
 	height: 0; 
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	border-left: 5px solid #2AABD2;
 	content: '';
 	background-color: transparent;
 	position: absolute;
 	left: 45%;
 	bottom: -15px;
 }
-
+table.tracker .active.trackerCountUp:before {
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #2AABD2;
+}
+table.tracker .active.trackerCountDown:before {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent; 
+  border-right: 5px solid #2AABD2; 
+}
 span.draft-player {
 	color: #2AABD2;
 }
