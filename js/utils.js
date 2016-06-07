@@ -1,8 +1,6 @@
 
 var dataObject,
     serviceURL = "https://jsonblob.com/api/jsonBlob/574c63aae4b01190df708c1e",
-    notificationURL = "https://pushpad.xyz/projects/1042/notifications",
-    notificationAuthToken = "ed5c3eb9e6cd1a101b728ffab3256f10",
     lastPick,
     currentPlayerID,
     chosenCardSubmit,
@@ -12,7 +10,10 @@ var dataObject,
     hours,
     roundNumber,
     turnOrder = [],
-    countingClass;
+    countingClass,
+    notificationURL = "https://onesignal.com/api/v1/notifications",
+    onesignalRESTKey = "ZDgyMzc4YmEtYmRiOS00MjVkLWIyZTEtZDQ5MDMxODI0MGVl",
+    oneSignalAppID = '48484984-31f6-4657-abb0-26bc147b0697';
 
 function handleTurnOrderTable(){
   loadCurrentTurnOrder();
@@ -48,10 +49,10 @@ function loadCurrentTurnOrder() {
 
   for(var i = 0; i < turnOrder.length; i++){
     if(i == dataObject.misc.turnIndex){
-      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'active');
+      addTurnOrderRowObject(dataObject[turnOrder[i]].longname, 'active');
     }
     else {
-      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'inactive');
+      addTurnOrderRowObject(dataObject[turnOrder[i]].longname, 'inactive');
     }
   }
 }
@@ -62,7 +63,7 @@ function updateRoundNumberDisplay(){
 
 function loadTurnOrderTableWithoutCurrentPlayer(){
   for(var i = 0; i < turnOrder.length; i++){
-      addTurnOrderRowObject(dataObject[turnOrder[i]].name, 'inactive');
+      addTurnOrderRowObject(dataObject[turnOrder[i]].longname, 'inactive');
   }
 }
 
@@ -146,7 +147,7 @@ var loadPlayers = function(){
 
 var updateTurnBasedPlayerLabels = function(){
     currentPlayerID = dataObject.misc.turnOrder[dataObject.misc.turnIndex];
-    $('#current-player-label').text(dataObject[currentPlayerID].name);
+    $('#current-player-label').text(dataObject[currentPlayerID].longname);
     updateLastPickTime();
 };
 var updateLastPickTime = function() {
@@ -201,7 +202,7 @@ var returnPlayer = function(){
           //console.log("returnPlayer success");
              dataObject = response;
              updateDataObjectElements();
-             //notifyNextPlayer();
+             notifyNextPlayer();
              clearForm();
              $("#cardSubmissionModal").modal('hide');
          },
@@ -213,32 +214,49 @@ var returnPlayer = function(){
     });
 };
 
+function getNextPlayer() {
+  var nextPlayerID = dataObject.misc.turnIndex;
+
+  if(dataObject.misc.countingUp){
+    nextPlayerID++;
+  } else {
+    nextPlayerID--;
+  }
+
+  if(nextPlayerID >= dataObject.misc.turnOrder.length){
+    nextPlayerID--;//Go back down, we probably are at the end of the array
+  } else if (nextPlayerID < 0) {
+    nextPlayerID = 0;//Go back up, we're probably at the start of the array
+  }
+
+  var nextPlayerKey = dataObject.misc.turnOrder[nextPlayerID];
+
+  return dataObject[nextPlayerKey];
+}
+
 var notifyNextPlayer = function(){
-    //console.log(lastPick);
+    console.log(getNextPlayer());
     var notificationData = {
-        "notification" : {
-            "body": "This is a test",
-            "title" : lastPick,
-            "target_url" : "http://andrewmaul.com/fun/draftleague2016/index.html"
-        }
+        "app_id": oneSignalAppID,
+        "included_segments": ["All"],
+        "headings" : { "en" : getNextPlayer().name + " is next!"},
+        "contents": {"en": lastPick},
+        "url" : "http://andrewmaul.com/fun/draftleague2016/index.html"
     };
 
     $.ajax({
         type: 'POST',
         url: notificationURL,
-        crossDomain: true,
         data: JSON.stringify(notificationData),
-        dataType: 'json',
         headers: {
-            'Access-Control-Allow-Origin' : "*",
-            'Authorization': 'Token token="' + notificationAuthToken + '"',
-            'Accept': 'application/json'
+            'Authorization': 'Basic ' + onesignalRESTKey,
+            'Content-Type':'application/json'
         },
         failure: function(response) {
             console.log(response);
         },
         success: function(response) {
-            //console.log(response);
+            console.log(response);
         },
         contentType: "application/jsonp"
     });
@@ -321,6 +339,7 @@ function catchInput(){
     clearTimeout(modalTimeOutFunction);
     saveSelectedCard(chosenCardString);
     returnPlayer();
+    //notifyNextPlayer();
   });
 }
 
