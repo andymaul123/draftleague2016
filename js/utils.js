@@ -215,27 +215,13 @@ var returnPlayer = function(){
 };
 
 function getNextPlayer() {
-  var nextPlayerID = dataObject.misc.turnIndex;
-
-  if(dataObject.misc.countingUp){
-    nextPlayerID++;
-  } else {
-    nextPlayerID--;
-  }
-
-  if(nextPlayerID >= dataObject.misc.turnOrder.length){
-    nextPlayerID--;//Go back down, we probably are at the end of the array
-  } else if (nextPlayerID < 0) {
-    nextPlayerID = 0;//Go back up, we're probably at the start of the array
-  }
-
-  var nextPlayerKey = dataObject.misc.turnOrder[nextPlayerID];
+  var nextPlayerKey = dataObject.misc.turnOrder[currentPlayerID];
 
   return dataObject[nextPlayerKey];
 }
 
 var notifyNextPlayer = function(){
-    console.log(getNextPlayer());
+    //console.log(getNextPlayer());
     var notificationData = {
         "app_id": oneSignalAppID,
         "included_segments": ["All"],
