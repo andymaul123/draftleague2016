@@ -219,13 +219,18 @@ function getNextPlayer() {
 }
 
 var notifyNextPlayer = function(){
-    //console.log(getNextPlayer());
+    var nextPlayer = getNextPlayer();
+
+    var playerIcon = "http://andrewmaul.com/fun/draftleague2016/img/" +
+              nextPlayer.name.toLowerCase() + ".jpg";
+
     var notificationData = {
         "app_id": oneSignalAppID,
         "included_segments": ["All"],
-        "headings" : { "en" : getNextPlayer().name + " is next!"},
+        "headings" : { "en" : nextPlayer.name + " is next!"},
         "contents": {"en": lastPick},
-        "url" : "http://andrewmaul.com/fun/draftleague2016/index.html"
+        "url" : "http://andrewmaul.com/fun/draftleague2016/index.html",
+        "chrome_web_icon" : playerIcon
     };
 
     $.ajax({
