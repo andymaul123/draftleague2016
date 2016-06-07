@@ -215,9 +215,7 @@ var returnPlayer = function(){
 };
 
 function getNextPlayer() {
-  var nextPlayerKey = dataObject.misc.turnOrder[currentPlayerID];
-
-  return dataObject[nextPlayerKey];
+  return dataObject[currentPlayerID];
 }
 
 var notifyNextPlayer = function(){
