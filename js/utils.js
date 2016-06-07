@@ -438,6 +438,7 @@ $(document).ready(function(){
       },
       {
         name: 'cards',
+        limit: 10,
         source: substringMatcher(cards)
       });
     }
