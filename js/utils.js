@@ -123,7 +123,7 @@ var createPlayerCardList = function(playerIdentifierString, cards){
 
 var addPlayer = function(playerData){
     var playerIdentifierString = playerData.name.toLowerCase();
-    playerIdentifierString = playerIdentifierString.slice(0,-6);
+    //playerIdentifierString = playerIdentifierString.slice(0,-6);
     createPlayerCardList(playerIdentifierString,playerData.cards);
 
     $('#card-count-' + playerIdentifierString).text(playerData.cards.length);
