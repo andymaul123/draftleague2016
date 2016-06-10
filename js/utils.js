@@ -345,7 +345,7 @@ function setupConfirmationModal(){
 
   modalTimeOutFunction = setTimeout(function(){
     $("#cardSubmissionModal").modal('hide');
-  },5000);
+  },8000);
 }
 
 function loadModalString(){
