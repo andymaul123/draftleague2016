@@ -9,6 +9,7 @@ var dataObject,
     updatedTime,
     hours,
     roundNumber,
+    pickedCards = [],
     turnOrder = [],
     countingClass,
     notificationURL = "https://onesignal.com/api/v1/notifications",
@@ -383,9 +384,24 @@ function cardInBanList(cardToCheck){
   return false;
 }
 
+function combineCardLists(){
+  pickedCards = [];
+
+  pickedCards = dataObject.player1.cards.concat(
+    dataObject.player2.cards,
+    dataObject.player3.cards,
+    dataObject.player4.cards,
+    dataObject.player5.cards,
+    dataObject.player6.cards,
+    dataObject.player7.cards,
+    dataObject.player8.cards);
+
+  //console.log(pickedCards);
+}
+
 function cardAlreadyPicked(cardToCheck){
-  cardValidationResult = arrayFind(dataObject.chosenCards, function(v){
-      return v.cardName === cardToCheck;
+  cardValidationResult = arrayFind(pickedCards, function(v){
+      return v === cardToCheck;
   });
 
   if(cardValidationResult >= 0){
@@ -400,6 +416,7 @@ function updateDataObjectElements(){
   loadCardFeed();
   loadModalString();
   handleTurnOrderTable();
+  combineCardLists();
 }
 
 function loadJSONData(){
