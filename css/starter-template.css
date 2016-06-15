@@ -373,3 +373,12 @@ span.twitter-typeahead {
 .modal-footer {
 	border: none;
 }
+
+.schedule-table {
+	width: 100%;
+}
+.round-block {
+	float: left;
+	width: 50%;
+	color: #fff;
+}

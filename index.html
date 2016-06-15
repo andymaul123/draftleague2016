@@ -22,18 +22,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
-    <script>
-      var OneSignal = OneSignal || [];
-      OneSignal.push(["init", {
-        appId: "48484984-31f6-4657-abb0-26bc147b0697",
-        subdomainName: 'edhdraft',
-        notifyButton: {
-            enable: true /* Set to false to hide */
-        }
-      }]);
-    </script>
   </head>
 
   <body class="draft">
@@ -46,69 +34,85 @@
         <div class="container">
           <div id="navbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index.html">Draft</a></li>
+              <li class="active"><a href="index.html">Matches</a></li>
               <li><a href="roster.html">Roster</a></li>
 
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </nav>
+      <h1>Schedule of Matches</h1>
       <div class="row">
-        <div class="col-md-7 rightBordered">
-          <h1>Current Player: <span id='current-player-label' class="draft-player">Loading...</span></h1>
-          <h4>Turn Order for Round: <span id='round-number-label'></span></h4>
-          <button class="tracker-left">Prev</button>
-          <table id="current-player-tracker" class="tracker">
-            <tbody>
-              <tr>
-                <td>Player 1</td>
-                <td>Player 2</td>
-                <td class="active">Player 3</td>
-                <td>Player 4</td>
-                <td>Player 5</td>
-                <td>Player 6</td>
-                <td>Player 7</td>
-                <td>Player 8</td>
-              </tr>
-            </tbody>
+        <div class="col-md-6">
+          <h3>June 16th, 2016</h3>
+          <table>
+            <tr><td><h4>Round 1</h4></td></tr>
+            <tr>
+              <td>Pod 1</td>
+            </tr>
+            <tr>
+              <td>Andy, Rikki, Hopper, Brendan</td>
+            </tr>
+            <tr>
+              <td>Pod 2</td>
+            </tr>
+            <tr>
+              <td>Justin, Blake, Michael, Alex</td>
+            </tr>
           </table>
-          <button class="tracker-right">Next</button>
-          <div style="clear: both;"></div>
-          <h3 id="timer"></h3>
-          <div class="alert alert-danger alert-dismissible fade in" id="ban-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
-          <div class="alert alert-warning alert-dismissible fade in" id="picked-alert" role="alert"> <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button><span class="alert-message"></span></div>
-          <form>
-            <div class="form-group" id="the-basics">
-              <label for="form-card">Choose Card</label>
-              <input type="text" class="form-control typeahead" id="form-card" placeholder="Enter card name">
-            </div>
-            <button type="submit" class="btn btn-success" id="card-submit">Submit</button>
-          </form>
+          <br />
+          <table>
+            <tr><td><h4>Round 2</h4></td></tr>
+            <tr>
+              <td>Pod 1</td>
+            </tr>
+            <tr>
+              <td>Andy, Justin, Michael, Alex</td>
+            </tr>
+            <tr>
+              <td>Pod 2</td>
+            </tr>
+            <tr>
+              <td>Rikki, Blake, Hopper, Brendan</td>
+            </tr>
+          </table>
         </div>
-        <div class="col-md-5" id="feed-table-div">
-          <h1>Latest Picks</h1>
-            <table class="table table-striped" id="feed-table">
-            </table>
+        <div class="col-md-6">
+          <h3>June 23rd, 2016</h3>
+          <table>
+            <tr><td><h4>Round 1</h4></td></tr>
+            <tr>
+              <td>Pod 1</td>
+            </tr>
+            <tr>
+              <td>Andy, Blake, Hopper, Brendan</td>
+            </tr>
+            <tr>
+              <td>Pod 2</td>
+            </tr>
+            <tr>
+              <td>Justin, Rikki, Michael, Alex</td>
+            </tr>
+          </table>
+          <br />
+          <table>
+            <tr><td><h4>Round 2</h4></td></tr>
+            <tr>
+              <td>Pod 1</td>
+            </tr>
+            <tr>
+              <td>Andy, Rikki, Michael, Alex</td>
+            </tr>
+            <tr>
+              <td>Pod 2</td>
+            </tr>
+            <tr>
+              <td>Justin, Blake, Hopper, Brendan</td>
+            </tr>
+          </table>
+        </div>
         </div>
       </div>
-
-      <div class="modal fade" id="cardSubmissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h2 class="modal-title" id="myModalLabel">Confirm Your Pick</h2>
-          </div>
-          <div class="modal-body">
-            Loading...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left;">Wait, no!</button>
-            <button type="button" class="btn btn-success" id="cardSubmissionModalConfirmationButton">Hell yeah!</button>
-          </div>
-        </div>
-      </div>
-    </div><!-- /.modal -->
       <div class="footer">
         <p>Magic the Gathering, FNM is TM and copyright Wizards of the Coast, Inc, a subsidiary of Hasbro, Inc. All rights reserved. This site is unaffiliated. /legalese</p>
       </div>
@@ -120,9 +124,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/utils.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-    <script src="js/typeahead.js"></script>
   </body>
 </html>
