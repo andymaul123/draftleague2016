@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Andrew Maul, Brendan Erquiaga">
+		<meta name="description" content="EDH Draft League 2016">
+		<title>EDH Draft League</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+		<link rel="stylesheet" href="sass/milligram.css">
+		<link rel="icon" href="https://milligram.github.io/img/favicon.png">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
+	</head>
+	<body>
+		<header>
+			<section>
+				<picture>
+					<source media="(max-width: 480px)" srcset="img/small.jpg">
+					<source media="(max-width: 768px)" srcset="img/medium.jpg">
+					<source media="(max-width: 1280px)" srcset="img/large.jpg">
+					<img src="img/largest.jpg" alt="EDH Draft League Banner">
+				</picture>
+			</section>
+		</header>
+		<main class="container">
+			<nav class="row">
+				<div class="column"><a href="#">Link 1</a></div>
+				<div class="column"><a href="#">Link 2</a></div>
+				<div class="column"><a href="#">Link 3</a></div>
+				<div class="column"><a href="#">Link 4</a></div>
+			</nav>
+
+			<section>
+				<h1>Draft Data</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur blandit lorem a egestas. Fusce semper nisi in diam consectetur, vel vehicula justo iaculis. Praesent lobortis velit pellentesque placerat interdum.</p>
+				<div class="row">
+					<div class="column">
+						<canvas id="chart1" width="200" height="200"></canvas>
+						<script>
+						var ctx = document.getElementById("chart1");
+						var chart1 = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+								datasets: [{
+									data: [12, 12, 3, 5, 2, 3],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.2)',
+										'rgba(54, 162, 235, 0.2)',
+										'rgba(255, 206, 86, 0.2)',
+										'rgba(75, 192, 192, 0.2)',
+										'rgba(153, 102, 255, 0.2)',
+										'rgba(255, 159, 64, 0.2)'
+									],
+									borderColor: [
+										'rgba(255,99,132,1)',
+										'rgba(54, 162, 235, 1)',
+										'rgba(255, 206, 86, 1)',
+										'rgba(75, 192, 192, 1)',
+										'rgba(153, 102, 255, 1)',
+										'rgba(255, 159, 64, 1)'
+									],
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Custom Chart Title'
+										},
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: false,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+					</div>
+					<div class="column">
+						<canvas id="chart2" width="200" height="200"></canvas>
+						<script>
+						var ctx = document.getElementById("chart2");
+						var chart2 = new Chart(ctx, {
+							type: 'pie',
+							data: {
+								labels: ["White", "Blue", "Black", "Red", "Green", "Brown", "Gold"],
+								datasets: [{
+									data: [12, 12, 3, 5, 2, 3],
+										backgroundColor: [
+											"#FF6384",
+											"#36A2EB",
+											"#FFCE56"
+										],
+										hoverBackgroundColor: [
+											"#FF6384",
+											"#36A2EB",
+											"#FFCE56"
+										]
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Colors Drafted'
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h1>Tournament Data</h1>
+				<p>Tournament data goes here</p>
+
+			</section>
+
+			<section>
+				<h1>Survey Data</h1>
+				<p>Survey data goes here</p>
+			</section>
+
+			<footer>
+				<section>
+					<p>Footer Goes Here</p>
+				</section>
+			</footer>
+		</main>
+	</body>
+</html>
