@@ -36,82 +36,106 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur blandit lorem a egestas. Fusce semper nisi in diam consectetur, vel vehicula justo iaculis. Praesent lobortis velit pellentesque placerat interdum.</p>
 				<div class="row">
 					<div class="column">
-						<canvas id="chart1" width="200" height="200"></canvas>
+						<canvas id="colorsDrafted" width="200" height="200"></canvas>
 						<script>
-						var ctx = document.getElementById("chart1");
-						var chart1 = new Chart(ctx, {
-							type: 'bar',
-							data: {
-								labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-								datasets: [{
-									data: [12, 12, 3, 5, 2, 3],
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(54, 162, 235, 0.2)',
-										'rgba(255, 206, 86, 0.2)',
-										'rgba(75, 192, 192, 0.2)',
-										'rgba(153, 102, 255, 0.2)',
-										'rgba(255, 159, 64, 0.2)'
-									],
-									borderColor: [
-										'rgba(255,99,132,1)',
-										'rgba(54, 162, 235, 1)',
-										'rgba(255, 206, 86, 1)',
-										'rgba(75, 192, 192, 1)',
-										'rgba(153, 102, 255, 1)',
-										'rgba(255, 159, 64, 1)'
-									],
-									borderWidth: 1
-								}]
-							},
-							options: {
-								title: {
-									display: true,
-									text: 'Custom Chart Title'
-										},
-								legend: {
-									display: false,
-										},
-								tooltips: {
-									enabled: false,
-										},
-								scales: {
-									yAxes: [{
-										ticks: {
-											beginAtZero:true
-										}
-									}]
-								}
-							}
-						});
-						</script>
-					</div>
-					<div class="column">
-						<canvas id="chart2" width="200" height="200"></canvas>
-						<script>
-						var ctx = document.getElementById("chart2");
-						var chart2 = new Chart(ctx, {
+						var ctx = document.getElementById("colorsDrafted");
+						var colorsDrafted = new Chart(ctx, {
 							type: 'pie',
 							data: {
-								labels: ["White", "Blue", "Black", "Red", "Green", "Brown", "Gold"],
+								labels: ["White", "Blue", "Black", "Red", "Green", "Brown", "Gold", "Land"],
 								datasets: [{
-									data: [12, 12, 3, 5, 2, 3],
+									data: [102, 113, 77, 40, 124, 166, 35, 111],
 										backgroundColor: [
-											"#FF6384",
-											"#36A2EB",
-											"#FFCE56"
+											"#f8f6da",
+											"#bcd9e8",
+											"#c2b7ae",
+											"#f8a076",
+											"#9cc497",
+											"#836953",
+											"#fdfd96",
+											"#c3b091"
 										],
-										hoverBackgroundColor: [
-											"#FF6384",
-											"#36A2EB",
-											"#FFCE56"
-										]
+										borderColor: "#000"
 								}]
 							},
 							options: {
 								title: {
 									display: true,
 									text: 'Colors Drafted'
+										}
+							}
+						});
+						</script>
+						<br />
+					</div>
+					<div class="column">
+						<canvas id="typesDrafted" width="200" height="200"></canvas>
+						<script>
+						var ctx = document.getElementById("typesDrafted");
+						var typesDrafted = new Chart(ctx, {
+							type: 'pie',
+							data: {
+								labels: ["Creature", "Sorcery", "Land", "Instant", "Enchantment", "Artifact", "Planeswalker"],
+								datasets: [{
+									data: [212, 102, 112, 94, 142, 90, 16],
+										backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)'
+										],
+										borderColor: "#000"
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Colors Drafted'
+										}
+							}
+						});
+						</script>
+						<br />
+					</div>
+				</div>
+				<div class="row">
+					<div class="column">
+						<canvas id="deckPrices" width="200" height="200"></canvas>
+						<script>
+						var ctx = document.getElementById("deckPrices");
+						var deckPrices = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								datasets: [{
+									data: [1818, 3168, 1058, 1323, 1807, 874, 2121, 900],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(10, 162, 43, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Drafted Prices (USD)'
+										},
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
 										},
 								scales: {
 									yAxes: [{
@@ -123,14 +147,21 @@
 							}
 						});
 						</script>
+						<br />
 					</div>
 				</div>
 			</section>
-
 			<section>
 				<h1>Tournament Data</h1>
 				<p>Tournament data goes here</p>
+				<div class="row">
+					<div class="column">
 
+					</div>
+					<div class="column">
+						
+					</div>
+				</div>
 			</section>
 
 			<section>
