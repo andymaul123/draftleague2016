@@ -24,23 +24,54 @@
 			</section>
 		</header>
 		<main class="container">
-		<section>
-			<nav class="row">
-				<div class="column"><a href="#">Link 1</a></div>
-				<div class="column"><a href="#">Link 2</a></div>
-				<div class="column"><a href="#">Link 3</a></div>
-				<div class="column"><a href="#">Link 4</a></div>
-			</nav>
-		</section>
-
 			<section>
+				<nav class="row">
+					<div class="column"><a href="#">Link 1</a></div>
+					<div class="column"><a href="#">Link 2</a></div>
+					<div class="column"><a href="#">Link 3</a></div>
+					<div class="column"><a href="#">Link 4</a></div>
+				</nav>
+			</section>
+			<section>
+				<h1>2016 Draft Post-Mortem</h1>
+				<p>Concluding our first-ever EDH Draft League, this page offers insights and analytics on data that was collected during and after the league. The idea was based on Sheldon's <a href="http://www.starcitygames.com/article/32810_The-Commander-League-Rotisserie-Draft.html" target="new">EDH Rotisserie Draft</a>. For those not aware of what the EDH Draft League is, here's a quick run-down:</p>
+				<blockquote>
+					The EDH Draft League is a running weekly event during a "season". A group of players began the league by drafting colors to form a three-color shard or wedge identity. Afterwards, players drafted a pool of three possible commanders in their identity. Following that the actual draft began. This website was created to facilitate the asynchronous drafting of 768 cards over a two-week period. Each player drafted a pool of 96 cards from all EDH legal cards in existence; proxies were made for unowned cards. Picks were zero-sum; there was only a single copy of each card to be chosen. Once the draft was complete, we played weekly two-game nights using a points system in four-player pods. Players earned points for kills, winning the game, and for votes. Each player voted for their favorite play of the game or best player at the end of each match. Points were averaged over games played; twenty-five matches over nine weeks.
+				</blockquote>
+				<p>Here are the final average points-per-game and total points for each player:</p>
+				<ol>
+					<li>Michael (Derevi Bantchantress) - 3.646 PPG / 87.5 total </li>
+					<li>Zack (Mimeoplasm Combo) - 2.991 PPG / 56.8 total </li>
+					<li>Andy (Alesha Stoneforger) - 2.953 PPG /  73.8 total </li>
+					<li>Brendan (Hazezon Tamar Swarm) - 2.933 PPG / 73.3 total</li>
+					<li>Justin (Karador Combo) - 2.929 PPG / 76.2 total</li>
+					<li>Hopper (Nekusar Wheels) - 2.707 PPG / 67.7 total</li>
+					<li>Ryan (Maelstrom Wanderer Combo) - 2.278 PPG / 61.5 total</li>
+					<li>Blake (Zur Enchantress) - 1.739 PPG / 40.0 total</li>
+				</ol>
+				<p>And now, for the main event...the Data!</p>
+			</section>
+	
+			<section class="dark">
 				<h1>Draft Data</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur blandit lorem a egestas. Fusce semper nisi in diam consectetur, vel vehicula justo iaculis. Praesent lobortis velit pellentesque placerat interdum.</p>
+				<p>768 cards drafted over two weeks, done in a snake. Below are insights we extracted from the numbers. Additionally, it would be a shame if we didn't list the first picks of the entire draft!</p>
+				<ol>
+					<li>Cyclonic Rift (Malestrom Wanderer)</li>
+					<li>Sol Ring (Derevi)</li>
+					<li>Skullclamp (Alesha)</li>
+					<li>Life From the Loam (Karador)</li>
+					<li>Waste Not (Nekusar)</li>
+					<li>Deadeye Navigator (Mimeoplasm)</li>
+					<li>Chromatic Lantern (Hazezon)</li>
+					<li>Mana Crypt (Zur)</li>
+				</ol>
 				<div class="row">
 					<div class="column">
 						<h2>Colors Drafted</h2>
 						<p>Breakdown of all cards drafted by color. Color was derived from converted cost with the exception of suspend cards which were adjusted manually. Gold cards were grouped together as a whole to avoid bloating the graph with combinations.</p>
-						<canvas id="colorsDrafted" width="200" height="200"></canvas>
+						<div>
+							<canvas id="colorsDrafted"></canvas>
+						</div>
 						<script>
 						var ctx = document.getElementById("colorsDrafted");
 						var colorsDrafted = new Chart(ctx, {
@@ -66,7 +97,9 @@
 								title: {
 									display: true,
 									text: 'Colors Drafted'
-										}
+										},
+								maintainAspectRatio: true,
+								responsive: true
 							}
 						});
 						</script>
@@ -80,7 +113,9 @@
 						<li>All creature types were grouped under Creature. This includes Artifact Creatures, etc.</li>
 						<li>The Artifacts category was reserved for pure artifacts.</li>
 						<li>Enchantments category included Enchantment Artifacts, but not Enchantment Creatures.</li>
-						<canvas id="typesDrafted" width="200" height="200"></canvas>
+						<div>
+							<canvas id="typesDrafted"></canvas>
+						</div>
 						<script>
 						var ctx = document.getElementById("typesDrafted");
 						var typesDrafted = new Chart(ctx, {
@@ -105,7 +140,9 @@
 								title: {
 									display: true,
 									text: 'Card Types Drafted'
-										}
+										},
+								maintainAspectRatio: true,
+								responsive: true
 							}
 						});
 						</script>
@@ -116,7 +153,9 @@
 					<div class="column">
 					<h2>Converted Cost</h2>
 					<p>Total number of drafted cards by converted mana cost. Lands were excluded. Split cards were categorized by total CMC. The highlander award goes to Brendan for drafting the only 11 CMC spell, Worldspine Wurm.</p>
-						<canvas id="convertedCost" width="200" height="200"></canvas>
+						<div>
+							<canvas id="convertedCost"></canvas>
+						</div>
 						<script>
 						var ctx = document.getElementById("convertedCost");
 						var convertedCost = new Chart(ctx, {
@@ -148,6 +187,8 @@
 									display: true,
 									text: 'Converted Mana Cost (Excluding Lands)'
 										},
+								maintainAspectRatio: true,
+								responsive: true,
 								legend: {
 									display: false,
 										},
@@ -158,6 +199,16 @@
 									yAxes: [{
 										ticks: {
 											beginAtZero:true
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}],
+									xAxes: [{
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
 										}
 									}]
 								}
@@ -169,7 +220,9 @@
 					<div class="column">
 					<h2>Deck Prices</h2>
 					<p>Aggregate costs in USD of paper versions of everyone's drafted pool. Prices were rounded up to the nearest dollar.</p>
-						<canvas id="deckPrices" width="200" height="200"></canvas>
+						<div>
+							<canvas id="deckPrices"></canvas>
+						</div>
 						<script>
 						var ctx = document.getElementById("deckPrices");
 						var deckPrices = new Chart(ctx, {
@@ -197,6 +250,295 @@
 									display: true,
 									text: 'Drafted Prices (USD)'
 										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}],
+									xAxes: [{
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
+					</div>
+				</div>
+			</section>
+			<section>
+				<h1>Tournament Data</h1>
+				<p>The tournament portion spanned roughlly twenty-five matches over a course of three months. The official kick-off was June 16th, 2016. The final showdown was September 15th, 2016. Here's are the numbers!</p>
+				<div class="row">
+					<div class="column">
+						<h2>Trending Points</h2>
+						<p>Line graph showing the overall trend of points-per-game average accumulated during the tournament. Y-axis is average PPG.</p>
+						<div>
+							<canvas id="trendingPoints"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("trendingPoints");
+						var trendingPoints = new Chart(ctx, {
+							type: 'line',
+							data: {
+								labels: ["Start", "Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", "Week 12", "Week 13"],
+									datasets: [
+										{
+											label: "Andy",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(255, 99, 132, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(255, 159, 64, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(255, 99, 132, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 1.000,	1.500,	1.600,	2.286,	2.333,	2.250,	2.792,	3.036,	2.969,	3.130,	2.917,	3.058,	2.953],
+											spanGaps: false,
+										},
+										{
+											label: "Blake",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(54, 162, 235, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(54, 162, 235, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(54, 162, 235, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 1.333,	4.889,	3.333,	2.667,	2.463,	2.350,	2.125,	1.964,	1.844,	1.833,	1.833,	1.857,	1.739],
+											spanGaps: false,
+										},
+										{
+											label: "Brendan",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(151, 255, 86, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(151, 255, 86, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(151, 255, 86, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 6.500,	3.611,	3.367,	3.619,	3.648,	3.439,	3.103,	2.822,	2.549,	2.623,	2.817,	2.558,	2.933],
+											spanGaps: false,
+										},
+										{
+											label: "Hopper",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(75, 192, 192, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(75, 192, 192, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(75, 192, 192, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 1.000,	1.889,	2.133,	2.595,	2.796,	3.106,	2.897,	2.811,	2.980,	3.061,	2.958,	2.899,	2.707],
+											spanGaps: false,
+										},
+										{
+											label: "Justin",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(153, 102, 255, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(75, 192, 192, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(153, 102, 255, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 0,	0.333,	1.400,	1.714,	2.000,	2.333,	2.500,	2.656,	2.778,	2.883,	2.913,	2.861,	2.929],
+											spanGaps: false,
+										},
+										{
+											label: "Michael",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(75,192,192,1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(255, 159, 64, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(75,192,192,1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 0, 6.250, 4.625, 4.333, 4.188, 4.250, 4.167, 3.929, 3.562, 3.735, 3.579, 3.932, 3.646],
+											spanGaps: false,
+										},
+										{
+											label: "Ryan",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(111, 64, 255, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(255, 159, 64, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(111, 64, 255, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 6.667,	2.556,	3.033,	2.452,	2.185,	2.375,	2.179,	2.312,	2.167,	2.125,	2.310,	2.420,	2.278],
+											spanGaps: false,
+										},
+										{
+											label: "Zack",
+											fill: false,
+											lineTension: 0.1,
+											backgroundColor: "rgba(75,192,192,0.4)",
+											borderColor: "rgba(10, 162, 43, 1)",
+											borderCapStyle: 'butt',
+											borderDash: [],
+											borderDashOffset: 0.0,
+											borderJoinStyle: 'miter',
+											pointBorderColor: "rgba(255, 159, 64, 0.7)",
+											pointBackgroundColor: "#fff",
+											pointBorderWidth: 1,
+											pointHoverRadius: 5,
+											pointHoverBackgroundColor: "rgba(10, 162, 43, 1)",
+											pointHoverBorderColor: "#000",
+											pointHoverBorderWidth: 2,
+											pointRadius: 1,
+											pointHitRadius: 10,
+											data: [0, 1.000,	1.000,	1.500,	0.900,	2.071,	1.889,	2.364,	2.077,	3.000,	2.725,	2.725,	2.725,	2.991],
+											spanGaps: false,
+										}
+									]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'PPG Trend'
+										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: true,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
+					</div>
+				</div>
+				<div class="row">
+					<div class="column">
+						<h2>Total Points</h2>
+						<p>Total points scored over the course of the league. Divided by games played for PPG.</p>
+						<div>
+							<canvas id="totalPoints"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("totalPoints");
+						var totalPoints = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								datasets: [{
+									data: [73.8, 40, 73.3, 67.7, 76.2, 87.5, 61.5, 56.8],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(10, 162, 43, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Total Points'
+										},
+								maintainAspectRatio: true,
+								responsive: true,
 								legend: {
 									display: false,
 										},
@@ -215,17 +557,111 @@
 						</script>
 						<br />
 					</div>
-				</div>
-			</section>
-			<section class="dark">
-				<h1>Tournament Data</h1>
-				<p>Tournament data goes here</p>
-				<div class="row">
 					<div class="column">
-
+						<h2>Total Kills</h2>
+						<p>Number of player kills scored overall.</p>
+						<div>
+							<canvas id="totalKills"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("totalKills");
+						var totalKills = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								datasets: [{
+									data: [16, 3, 25, 17, 16, 27, 16, 17],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(10, 162, 43, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Total Kills'
+										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
 					</div>
 					<div class="column">
-						
+						<h2>Total Votes</h2>
+						<p>Totall votes earned over the course of the league. A player could earn up to three votes per match.</p>
+						<div>
+							<canvas id="totalVotes"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("totalVotes");
+						var totalVotes = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								datasets: [{
+									data: [27, 15, 16, 16, 24, 11, 14, 19],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(10, 162, 43, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Total Votes'
+										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
 					</div>
 				</div>
 			</section>
