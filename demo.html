@@ -36,6 +36,8 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur blandit lorem a egestas. Fusce semper nisi in diam consectetur, vel vehicula justo iaculis. Praesent lobortis velit pellentesque placerat interdum.</p>
 				<div class="row">
 					<div class="column">
+						<h2>Colors Drafted</h2>
+						<p>Breakdown of all cards drafted by color. Color was derived from converted cost with the exception of suspend cards which were adjusted manually. Gold cards were grouped together as a whole to avoid bloating the graph with combinations.</p>
 						<canvas id="colorsDrafted" width="200" height="200"></canvas>
 						<script>
 						var ctx = document.getElementById("colorsDrafted");
@@ -69,6 +71,13 @@
 						<br />
 					</div>
 					<div class="column">
+						<h2>Types Drafted</h2>
+						<p>Breakdown of all cards drafted by card type. Only super-types were counted, and "tribal" was excluded. Multiple supertypes were grouped accordingly:
+						</p>
+						<ul>
+						<li>All creature types were grouped under Creature. This includes Artifact Creatures, etc.</li>
+						<li>The Artifacts category was reserved for pure artifacts.</li>
+						<li>Enchantments category included Enchantment Artifacts, but not Enchantment Creatures.</li>
 						<canvas id="typesDrafted" width="200" height="200"></canvas>
 						<script>
 						var ctx = document.getElementById("typesDrafted");
@@ -93,7 +102,7 @@
 							options: {
 								title: {
 									display: true,
-									text: 'Colors Drafted'
+									text: 'Card Types Drafted'
 										}
 							}
 						});
@@ -103,6 +112,61 @@
 				</div>
 				<div class="row">
 					<div class="column">
+					<h2>Converted Cost</h2>
+					<p>Total number of drafted cards by converted mana cost. Lands were excluded. Split cards were categorized by total CMC. The highlander award goes to Brendan for drafting the only 11 CMC spell, Worldspine Wurm.</p>
+						<canvas id="convertedCost" width="200" height="200"></canvas>
+						<script>
+						var ctx = document.getElementById("convertedCost");
+						var convertedCost = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["0", "1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12"],
+								datasets: [{
+									data: [8, 63, 120, 156, 112, 88, 55, 31, 15, 3, 3, 1, 2],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(10, 162, 43, 0.7)',
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(54, 162, 235, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(75, 192, 192, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Converted Mana Cost (Excluding Lands)'
+										},
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
+					</div>
+					<div class="column">
+					<h2>Deck Prices</h2>
+					<p>Aggregate costs in USD of paper versions of everyone's drafted pool. Prices were rounded up to the nearest dollar.</p>
 						<canvas id="deckPrices" width="200" height="200"></canvas>
 						<script>
 						var ctx = document.getElementById("deckPrices");
