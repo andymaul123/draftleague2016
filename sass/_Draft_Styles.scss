@@ -20,8 +20,9 @@ img {
 	}
 	section {
 		padding: 0 2.0rem;
-		&:nth-child(odd) {
+		&.dark {
 			background: #222;
+			color: #ccc;
 		}
 	}
 }

@@ -3,7 +3,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  color: #606c76;
+  color: #222;
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1.6em;
   font-weight: 300;
@@ -53,8 +53,8 @@ input[type='submit'] {
   input[type='reset']:focus,
   input[type='submit']:hover,
   input[type='submit']:focus {
-    background-color: #606c76;
-    border-color: #606c76;
+    background-color: #222;
+    border-color: #222;
     color: #fff;
     outline: 0; }
   .button.button-disabled, .button[disabled],
@@ -103,9 +103,9 @@ input[type='submit'] {
     input[type='reset'].button-outline:focus,
     input[type='submit'].button-outline:hover,
     input[type='submit'].button-outline:focus {
-      color: #606c76;
+      color: #222;
       background-color: transparent;
-      border-color: #606c76; }
+      border-color: #222; }
     .button.button-outline.button-disabled:hover, .button.button-outline.button-disabled:focus, .button.button-outline[disabled]:hover, .button.button-outline[disabled]:focus,
     button.button-outline.button-disabled:hover,
     button.button-outline.button-disabled:focus,
@@ -142,7 +142,7 @@ input[type='submit'] {
     input[type='reset'].button-clear:focus,
     input[type='submit'].button-clear:hover,
     input[type='submit'].button-clear:focus {
-      color: #606c76;
+      color: #222;
       background-color: transparent;
       border-color: transparent; }
     .button.button-clear.button-disabled:hover, .button.button-clear.button-disabled:focus, .button.button-clear[disabled]:hover, .button.button-clear[disabled]:focus,
@@ -346,12 +346,12 @@ input[type='radio'] {
     width: calc(100% + 2.0rem); }
     .row .column {
       margin-bottom: inherit;
-      padding: 0 1rem; } }
+      padding: 0 1.5rem; } }
 a {
   color: #9b4dca;
   text-decoration: none; }
   a:hover {
-    color: #606c76; }
+    color: #222; }
 
 dl,
 ol,
@@ -508,8 +508,9 @@ img {
         background: #000; }
 .container section {
   padding: 0 2.0rem; }
-  .container section:nth-child(odd) {
-    background: #222; }
+  .container section.dark {
+    background: #222;
+    color: #ccc; }
 
 canvas {
   max-width: 500px;
