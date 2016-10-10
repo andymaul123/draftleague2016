@@ -26,8 +26,8 @@
 		<main class="container">
 			<section>
 				<nav class="row">
-					<div class="column"><a href="#">Link 1</a></div>
-					<div class="column"><a href="#">Link 2</a></div>
+					<div class="column"><a href="#">Draft</a></div>
+					<div class="column"><a href="data_2016.html">2016 Data</a></div>
 					<div class="column"><a href="#">Link 3</a></div>
 					<div class="column"><a href="#">Link 4</a></div>
 				</nav>
@@ -49,7 +49,7 @@
 					<li>Ryan (Maelstrom Wanderer Combo) - 2.278 PPG / 61.5 total</li>
 					<li>Blake (Zur Enchantress) - 1.739 PPG / 40.0 total</li>
 				</ol>
-				<p>And now, for the main event...the Data!</p>
+				<p>Last but not least, <a href="#">here is the complete spreadsheet of collected data</a> in read-only mode. (Coming Soon).</p>
 			</section>
 	
 			<section class="dark">
@@ -96,10 +96,16 @@
 							options: {
 								title: {
 									display: true,
-									text: 'Colors Drafted'
+									text: 'Colors Drafted',
+									fontColor: "#ccc"
 										},
 								maintainAspectRatio: true,
-								responsive: true
+								responsive: true,
+								legend: {
+									labels: {
+										fontColor: "#ccc"
+									}
+								}
 							}
 						});
 						</script>
@@ -139,10 +145,16 @@
 							options: {
 								title: {
 									display: true,
-									text: 'Card Types Drafted'
+									text: 'Card Types Drafted',
+									fontColor: "#ccc"
 										},
 								maintainAspectRatio: true,
-								responsive: true
+								responsive: true,
+								legend: {
+									labels: {
+										fontColor: "#ccc"
+									}
+								}
 							}
 						});
 						</script>
@@ -185,20 +197,25 @@
 							options: {
 								title: {
 									display: true,
-									text: 'Converted Mana Cost (Excluding Lands)'
+									text: 'Converted Mana Cost (Excluding Lands)',
+									fontColor: "#ccc"
 										},
 								maintainAspectRatio: true,
 								responsive: true,
 								legend: {
 									display: false,
-										},
+									labels: {
+										fontColor: "#ccc"
+									}
+									},
 								tooltips: {
 									enabled: true,
 										},
 								scales: {
 									yAxes: [{
 										ticks: {
-											beginAtZero:true
+											beginAtZero:true,
+											fontColor: "#ccc"
 										},
 										gridLines: { 
 											show: true, 
@@ -206,6 +223,10 @@
 										}
 									}],
 									xAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
 										gridLines: { 
 											show: true, 
 											color: "rgba(80, 80, 80, 0.5)",
@@ -261,7 +282,8 @@
 								scales: {
 									yAxes: [{
 										ticks: {
-											beginAtZero:true
+											beginAtZero:true,
+											fontColor: "#ccc"
 										},
 										gridLines: { 
 											show: true, 
@@ -269,6 +291,10 @@
 										}
 									}],
 									xAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
 										gridLines: { 
 											show: true, 
 											color: "rgba(80, 80, 80, 0.5)",
@@ -666,14 +692,21 @@
 				</div>
 			</section>
 
-			<section>
+			<section class="dark">
 				<h1>Survey Data</h1>
-				<p>Survey data goes here</p>
+				<p>Coming Soon.</p>
+			</section>
+			<section>
+				<h1>Full Roster</h1>
+				<p>Complete list of every player's pool, including waiver wires for a nice historical perspective. Coming Soon.</p>
 			</section>
 
 			<footer>
 				<section>
-					<p>Footer Goes Here</p>
+					<p>Magic the Gathering, FNM is TM and copyright Wizards of the Coast, Inc, a subsidiary of Hasbro, Inc. All rights reserved. This site is unaffiliated. /legalese
+					<br />
+					Site built using <a href="https://milligram.github.io/" target="new">Milligram.io</a> and <a href="http://www.chartjs.org/" target="new">Chart.js</a>
+					</p>
 				</section>
 			</footer>
 		</main>
