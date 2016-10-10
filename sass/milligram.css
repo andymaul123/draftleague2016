@@ -492,6 +492,11 @@ h6 {
   .clearfix:after {
     clear: both; }
 
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto; }
+
 img {
   max-width: 100%; }
 
@@ -524,5 +529,66 @@ footer p {
   padding: 5px 0 0 0;
   font-size: 1.2rem;
   margin: 0; }
+
+.accordion {
+  margin: 3rem 0 0 3rem; }
+
+.showTable {
+  margin: 1rem 0 0 3rem; }
+
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  border: 1px solid #000;
+  position: relative; }
+
+.andy {
+  background: url(../img/andy.jpg) no-repeat; }
+
+.justin {
+  background: url(../img/justin.jpg) no-repeat; }
+
+.rikki {
+  background: url(../img/rikki.jpg) no-repeat; }
+
+.michael {
+  background: url(../img/michael.jpg) no-repeat; }
+
+.hopper {
+  background: url(../img/hopper.jpg) no-repeat; }
+
+.blake {
+  background: url(../img/blake.jpg) no-repeat; }
+
+.alex {
+  background: url(../img/alex.jpg) no-repeat; }
+
+.brendan {
+  background: url(../img/brendan.jpg) no-repeat; }
+
+.unknown {
+  background: url(../img/unknown.jpg) no-repeat; }
+
+.symbol-container {
+  position: absolute;
+  top: 75%;
+  left: 10%; }
+
+.mana-symbol {
+  width: 35px;
+  height: 35px;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 35px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px; }
+
+.mana-symbol-main {
+  height: 40px;
+  width: 40px; }
 
 /*# sourceMappingURL=milligram.css.map */
