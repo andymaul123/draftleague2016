@@ -317,7 +317,7 @@
 				<div class="row">
 					<div class="column">
 						<h2>Trending Points</h2>
-						<p>Line graph showing the overall trend of points-per-game average accumulated during the tournament. Y-axis is average PPG.</p>
+						<p>Line graph showing the overall trend of points-per-game average accumulated during the tournament. Y-axis is average PPG. Shoutout to Zack and the Sultai-Rollercoaster.</p>
 						<div>
 							<canvas id="trendingPoints"></canvas>
 						</div>
@@ -534,7 +534,7 @@
 				</div>
 <!-- Chapter 5: Tournament Bar Charts -->
 				<div class="row">
-					<div class="column center">
+					<div class="column">
 						<h2>Total Points</h2>
 						<p>Total points scored over the course of the league. Divided by games played for PPG.</p>
 						<div>
@@ -587,6 +587,8 @@
 						</script>
 						<br />
 					</div>
+				</div>
+				<div class="row">
 					<div class="column center">
 						<h2>Total Kills</h2>
 						<p>Number of player kills scored overall.</p>
@@ -642,7 +644,7 @@
 					</div>
 					<div class="column center">
 						<h2>Total Votes</h2>
-						<p>Totall votes earned over the course of the league. A player could earn up to three votes per match.</p>
+						<p>Total votes earned over the course of the league. A player could earn up to three votes per match.</p>
 						<div>
 							<canvas id="totalVotes"></canvas>
 						</div>
@@ -698,7 +700,159 @@
 <!-- Chapter 6: Survey Data Intro -->
 			<section class="dark">
 				<h1>Survey Data</h1>
-				<p>Coming Soon.</p>
+				<p>After the league ended we sent out a survey form to be filled out by players anonymously. This gave us some additional insight into how the experience was perceived by everyone. Before diving into the visualizations, here are some high-level take-aways:
+				</p>
+				<ul>
+					<li>Vast majority of players were generally happy with the league, their deck, and the draft. Yay!</li>
+					<li>Only one person changed commanders in the entire season.</li>
+					<li>Most people were ambivalent about sideboard rules, and opted for a waiver wire pick each week.</li>
+					<li>Most Surprising Deck: Alesha Stoneforger with 50% majority</li>
+					<li>Crowd Favorite Deck: Alesha Stoneforger with 37.5% majority</li>
+					<li>Least Favorite Deck: Derevi Bantchantress with 62.5% majority</li>
+					<li>There wasn't a single favorite card, but Omniscience took the cake as least favorite!</li>
+					<li>Season length, pod size, and matchup schedule were all well liked by majority</li>
+				</ul>
+				<p>As always, transparency is key. <a href="#" target="new">Here is a read-only aggregate of non-written survey responses</a>. Coming soon.</p>
+				<div class="row">
+					<div class="column">
+						<h2>Power Level</h2>
+						<p>Players voted for each player's deck in terms of overall power-level. An average of the votes was taken and represented visually below.</p>
+						<div>
+							<canvas id="ratedPower"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("ratedPower");
+						var ratedPower = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: ["Michael", "Andy", "Ryan", "Brendan", "Zack", "Hopper", "Justin", "Blake"],
+								datasets: [{
+									data: [7.89, 5.75, 5.56, 5.38, 4.29, 3.71, 3.57, 2.0],
+									backgroundColor: [
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(10, 162, 43, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(54, 162, 235, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Average Rated Power Level',
+									fontColor: "#ccc"
+										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}],
+									xAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
+					</div>
+					<div class="column">
+						<h2>Fun Level</h2>
+						<p>Same scale and deal as power level, except this esoteric graph quantifies each deck's "fun-ness". Hopper and Justin are actually tied, but represented in alphabetical order.</p>
+						<div>
+							<canvas id="ratedFun"></canvas>
+						</div>
+						<script>
+						var ctx = document.getElementById("ratedFun");
+						var ratedFun = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: [ "Andy", "Brendan", "Zack", "Ryan", "Hopper", "Justin", "Michael", "Blake"],
+								datasets: [{
+									data: [6.25, 6.13, 5.63, 5.43, 5, 5, 2.14, 1.86],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.7)',
+										'rgba(151, 255, 86, 0.7)',
+										'rgba(10, 162, 43, 0.7)',
+										'rgba(111, 64, 255, 0.7)',
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(153, 102, 255, 0.7)',
+										'rgba(255, 159, 64, 0.7)',
+										'rgba(54, 162, 235, 0.7)'
+									],
+									borderColor: "#000",
+									borderWidth: 1
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: 'Average Rated Fun Level',
+									fontColor: "#ccc"
+										},
+								maintainAspectRatio: true,
+								responsive: true,
+								legend: {
+									display: false,
+										},
+								tooltips: {
+									enabled: true,
+										},
+								scales: {
+									yAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}],
+									xAxes: [{
+										ticks: {
+											beginAtZero:true,
+											fontColor: "#ccc"
+										},
+										gridLines: { 
+											show: true, 
+											color: "rgba(80, 80, 80, 0.5)",
+										}
+									}]
+								}
+							}
+						});
+						</script>
+						<br />
+					</div>
+				</div>
 			</section>
 <!-- Chapter 7: Roster -->
 			<section>
