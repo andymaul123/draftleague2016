@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="author" content="Andrew Maul, Brendan Erquiaga">
+		<meta name="author" content="Andrew Maul, Hazezon Erquiaga">
 		<meta name="description" content="EDH Draft League 2016">
 		<title>EDH Draft League</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -39,16 +39,16 @@
 				<blockquote>
 					The EDH Draft League is a running weekly event during a "season". A group of players began the league by drafting colors to form a three-color shard or wedge identity. Afterwards, players drafted a pool of three possible commanders in their identity. Following that the actual draft began. This website was created to facilitate the asynchronous drafting of 768 cards over a two-week period. Each player drafted a pool of 96 cards from all EDH legal cards in existence; proxies were made for unowned cards. Picks were zero-sum; there was only a single copy of each card to be chosen. Once the draft was complete, we played weekly two-game nights using a points system in four-player pods. Players earned points for kills, winning the game, and for votes. Each player voted for their favorite play of the game or best player at the end of each match. Points were averaged over games played; roughly twenty-five matches over nine weeks.
 				</blockquote>
-				<p>Here are the final average points-per-game and total points for each player, in order of place finish:</p>
+				<p>Here are the final average points-per-game and total points for each player, in order of place finish. I've removed names in favor of keeping everyone as anonymous as possible.</p>
 				<ol>
-					<li>Michael (Derevi Bantchantress) - 3.646 PPG / 87.5 total. Winner! </li>
-					<li>Zack (Mimeoplasm Combo) - 2.991 PPG / 56.8 total </li>
-					<li>Andy (Alesha Stoneforger) - 2.953 PPG /  73.8 total </li>
-					<li>Brendan (Hazezon Tamar Swarm) - 2.933 PPG / 73.3 total</li>
-					<li>Justin (Karador Combo) - 2.929 PPG / 76.2 total</li>
-					<li>Hopper (Nekusar Wheels) - 2.707 PPG / 67.7 total</li>
-					<li>Ryan (Maelstrom Wanderer Combo) - 2.278 PPG / 61.5 total</li>
-					<li>Blake (Zur Enchantress) - 1.739 PPG / 40.0 total</li>
+					<li>Derevi Bantchantress - 3.646 PPG / 87.5 total. Winner! </li>
+					<li>Mimeoplasm Combo - 2.991 PPG / 56.8 total </li>
+					<li>Alesha Stoneforger - 2.953 PPG /  73.8 total </li>
+					<li>Hazezon Tamar Swarm - 2.933 PPG / 73.3 total</li>
+					<li>Karador Combo - 2.929 PPG / 76.2 total</li>
+					<li>Nekusar Wheels - 2.707 PPG / 67.7 total</li>
+					<li>Maelstrom Wanderer Combo - 2.278 PPG / 61.5 total</li>
+					<li>Zur Enchantress - 1.739 PPG / 40.0 total</li>
 				</ol>
 				<p>Last but not least, <a href="#">here is the complete spreadsheet of collected data</a> in read-only mode. (Coming Soon).</p>
 			</section>
@@ -82,14 +82,14 @@
 								datasets: [{
 									data: [102, 113, 77, 40, 124, 166, 35, 111],
 										backgroundColor: [
-											"#f8f6da",
-											"#bcd9e8",
-											"#c2b7ae",
-											"#f8a076",
-											"#9cc497",
-											"#836953",
-											"#fdfd96",
-											"#c3b091"
+											"rgba(255,255,255,1)",
+											"rgba(100,149,237,0.7)",
+											"rgba(51,51,51,1)",
+											"rgba(255,105,97,0.7)",
+											"rgba(144,238,144,0.7)",
+											"rgba(131,105,83,0.7)",
+											"rgba(255,255,0,0.7)",
+											"rgba(147,112,219,0.7)"
 										],
 										borderColor: "#000"
 								}]
@@ -166,7 +166,7 @@
 				<div class="row">
 					<div class="column">
 					<h2>Converted Cost</h2>
-					<p>Total number of drafted cards by converted mana cost. Lands were excluded. Split cards were categorized by total CMC. The highlander award goes to Brendan for drafting the only 11 CMC spell, Worldspine Wurm.</p>
+					<p>Total number of drafted cards by converted mana cost. Lands were excluded. Split cards were categorized by total CMC. The highlander award goes to Hazezon for drafting the only 11 CMC spell, Worldspine Wurm.</p>
 						<div>
 							<canvas id="convertedCost"></canvas>
 						</div>
@@ -190,7 +190,8 @@
 										'rgba(255, 99, 132, 0.7)',
 										'rgba(54, 162, 235, 0.7)',
 										'rgba(151, 255, 86, 0.7)',
-										'rgba(75, 192, 192, 0.7)'
+										'rgba(75, 192, 192, 0.7)',
+										'rgba(255, 255, 255, 0.7)'
 									],
 									borderColor: "#000",
 									borderWidth: 1
@@ -242,7 +243,7 @@
 					</div>
 					<div class="column">
 					<h2>Deck Prices</h2>
-					<p>Aggregate costs in USD of paper versions of everyone's drafted pool. Prices were rounded up to the nearest dollar.</p>
+					<p>Aggregate costs in USD of paper versions of everyone's drafted pool. Prices were rounded up to the nearest dollar. Zur's deck cost over $1,000 more than the second place deck! Top three expensive cards drafted in order of price were The Tabernacle at Pendrell Vale (Zur), Imperial Seal (Alesha), and Timetwister (Maelstrom).</p>
 						<div>
 							<canvas id="deckPrices"></canvas>
 						</div>
@@ -251,7 +252,7 @@
 						var deckPrices = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								labels: ["Alesha", "Zur", "Hazezon", "Nekusar", "Karador", "Derevi", "Maelstrom", "Mimeoplasm"],
 								datasets: [{
 									data: [1818, 3168, 1058, 1323, 1807, 874, 2121, 900],
 									backgroundColor: [
@@ -317,7 +318,7 @@
 				<div class="row">
 					<div class="column">
 						<h2>Trending Points</h2>
-						<p>Line graph showing the overall trend of points-per-game average accumulated during the tournament. Y-axis is average PPG. Shoutout to Zack and the Sultai-Rollercoaster.</p>
+						<p>Line graph showing the overall trend of points-per-game average accumulated during the tournament. Y-axis is average PPG. Shoutout to Mimeoplasm and the Sultai-Rollercoaster.</p>
 						<div>
 							<canvas id="trendingPoints"></canvas>
 						</div>
@@ -329,7 +330,7 @@
 								labels: ["Start", "Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", "Week 12", "Week 13"],
 									datasets: [
 										{
-											label: "Andy",
+											label: "Alesha",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -351,7 +352,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Blake",
+											label: "Zur",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -373,7 +374,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Brendan",
+											label: "Hazezon",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -395,7 +396,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Hopper",
+											label: "Nekusar",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -417,7 +418,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Justin",
+											label: "Karador",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -439,7 +440,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Michael",
+											label: "Derevi",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -461,7 +462,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Ryan",
+											label: "Maelstrom",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -483,7 +484,7 @@
 											spanGaps: false,
 										},
 										{
-											label: "Zack",
+											label: "Mimeoplasm",
 											fill: false,
 											lineTension: 0.1,
 											backgroundColor: "rgba(75,192,192,0.4)",
@@ -545,7 +546,7 @@
 						var totalPoints = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								labels: ["Alesha", "Zur", "Hazezon", "Nekusar", "Karador", "Derevi", "Maelstrom", "Mimeoplasm"],
 								datasets: [{
 									data: [73.8, 40, 73.3, 67.7, 76.2, 87.5, 61.5, 56.8],
 									backgroundColor: [
@@ -589,7 +590,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="column center">
+					<div class="column">
 						<h2>Total Kills</h2>
 						<p>Number of player kills scored overall.</p>
 						<div>
@@ -600,7 +601,7 @@
 						var totalKills = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								labels: ["Alesha", "Zur", "Hazezon", "Nekusar", "Karador", "Derevi", "Maelstrom", "Mimeoplasm"],
 								datasets: [{
 									data: [16, 3, 25, 17, 16, 27, 16, 17],
 									backgroundColor: [
@@ -642,7 +643,7 @@
 						</script>
 						<br />
 					</div>
-					<div class="column center">
+					<div class="column">
 						<h2>Total Votes</h2>
 						<p>Total votes earned over the course of the league. A player could earn up to three votes per match.</p>
 						<div>
@@ -653,7 +654,7 @@
 						var totalVotes = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: ["Andy", "Blake", "Brendan", "Hopper", "Justin", "Michael", "Ryan", "Zack"],
+								labels: ["Alesha", "Zur", "Hazezon", "Nekusar", "Karador", "Derevi", "Maelstrom", "Mimeoplasm"],
 								datasets: [{
 									data: [27, 15, 16, 16, 24, 11, 14, 19],
 									backgroundColor: [
@@ -716,7 +717,7 @@
 				<div class="row">
 					<div class="column">
 						<h2>Power Level</h2>
-						<p>Players voted for each player's deck in terms of overall power-level. An average of the votes was taken and represented visually below.</p>
+						<p>Players voted for each deck in terms of overall subjective power-level. The inverse of votes was calculated and then averaged, as there was only one dataset that contained a high deviation; most were almost perfectly grouped around the mean.</p>
 						<div>
 							<canvas id="ratedPower"></canvas>
 						</div>
@@ -725,7 +726,7 @@
 						var ratedPower = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: ["Michael", "Andy", "Ryan", "Brendan", "Zack", "Hopper", "Justin", "Blake"],
+								labels: ["Derevi", "Alesha", "Maelstrom", "Hazezon", "Mimeoplasm", "Nekusar", "Karador", "Zur"],
 								datasets: [{
 									data: [7.89, 5.75, 5.56, 5.38, 4.29, 3.71, 3.57, 2.0],
 									backgroundColor: [
@@ -785,7 +786,7 @@
 					</div>
 					<div class="column">
 						<h2>Fun Level</h2>
-						<p>Same scale and deal as power level, except this esoteric graph quantifies each deck's "fun-ness". Hopper and Justin are actually tied, but represented in alphabetical order.</p>
+						<p>Same scale and deal as power level, except this esoteric graph quantifies each deck's "fun-ness". Nekusar and Karador are actually tied, but represented in alphabetical order.</p>
 						<div>
 							<canvas id="ratedFun"></canvas>
 						</div>
@@ -794,7 +795,7 @@
 						var ratedFun = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: [ "Andy", "Brendan", "Zack", "Ryan", "Hopper", "Justin", "Michael", "Blake"],
+								labels: [ "Alesha", "Hazezon", "Mimeoplasm", "Maelstrom", "Nekusar", "Karador", "Derevi", "Zur"],
 								datasets: [{
 									data: [6.25, 6.13, 5.63, 5.43, 5, 5, 2.14, 1.86],
 									backgroundColor: [
@@ -862,7 +863,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular andy">
+								<div class="circular alesha">
 								  <div class="symbol-container">
 									<!-- Red -->
 									  <svg
@@ -1004,7 +1005,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Andy's Draft Pool</h3>
+								<h3 class="accordion">Alesha's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Skullclamp</li>
@@ -1111,7 +1112,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular blake">
+								<div class="circular zur">
 									<div class="symbol-container">
 										<!-- White -->
 											<svg
@@ -1232,7 +1233,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Blake's Draft Pool</h3>
+								<h3 class="accordion">Zur's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Mana Crypt</li>
@@ -1339,7 +1340,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-				                <div class="circular brendan">
+				                <div class="circular hazezon">
 				                  <div class="symbol-container">
 				                    <!-- Red -->
 				                      <svg
@@ -1483,7 +1484,7 @@
 				                </div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Brendan's Draft Pool</h3>
+								<h3 class="accordion">Hazezon's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Chromatic Lantern</li>
@@ -1593,7 +1594,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular hopper">
+								<div class="circular nekusar">
 									<div class="symbol-container">
 										<!-- Blue -->
 											<svg
@@ -1707,7 +1708,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Hopper's Draft Pool</h3>
+								<h3 class="accordion">Nekusar's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Waste Not</li>
@@ -1814,7 +1815,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular justin">
+								<div class="circular karador">
 									<div class="symbol-container">
 										<!-- White -->
 											<svg
@@ -1957,7 +1958,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Justin's Draft Pool</h3>
+								<h3 class="accordion">Karador's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Life from the Loam</li>
@@ -2064,7 +2065,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular michael">
+								<div class="circular derevi">
 									<div class="symbol-container">
 										<!-- Green -->
 											<svg
@@ -2188,7 +2189,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Michael's Draft Pool</h3>
+								<h3 class="accordion">Derevi's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Sol Ring</li>
@@ -2298,7 +2299,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular alex">
+								<div class="circular maelstrom">
 									<div class="symbol-container">
 										<!-- Green -->
 											<svg
@@ -2415,7 +2416,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Ryan's Draft Pool</h3>
+								<h3 class="accordion">Maelstrom's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Cyclonic Rift</li>
@@ -2522,7 +2523,7 @@
 					<div class="column">
 						<div class="row">
 							<div class="column-25">
-								<div class="circular rikki">
+								<div class="circular mimeoplasm">
 									<div class="symbol-container">
 										<!-- Black -->
 											<svg
@@ -2639,7 +2640,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Zak's Draft Pool</h3>
+								<h3 class="accordion">Mimeoplasm's Pool</h3>
 								<div class="showTable">
 									<ol>
 										<li>Deadeye Navigator</li>
