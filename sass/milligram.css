@@ -500,20 +500,38 @@ h6 {
 img {
   max-width: 100%; }
 
-.container nav {
-  padding: 0 2.0rem; }
-  .container nav .column {
-    text-align: center; }
-    .container nav .column a {
-      display: block;
+.container {
+  position: relative; }
+  .container nav {
+    padding: 0 2.0rem; }
+    .container nav .column {
+      text-align: center; }
+      .container nav .column a {
+        display: block;
+        width: 100%;
+        padding: 10px 0 10px 0;
+        text-transform: uppercase; }
+  .container section {
+    padding: 2rem 2.5rem; }
+    .container section.dark {
+      background: #222;
+      color: #ccc; }
+  .container .stickynav {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #222;
+    z-index: 9999999; }
+    .container .stickynav ul {
       width: 100%;
-      padding: 10px 0 10px 0;
-      text-transform: uppercase; }
-.container section {
-  padding: 2rem 2.5rem; }
-  .container section.dark {
-    background: #222;
-    color: #ccc; }
+      margin: 0; }
+      .container .stickynav ul li {
+        display: inline-block;
+        padding: 1% 5% 1% 5%; }
 
 canvas {
   max-width: 100%;

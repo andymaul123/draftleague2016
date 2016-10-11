@@ -3,6 +3,7 @@ img {
 }
 
 .container {
+	position: relative;
 	nav {
 		padding: 0 2.0rem;
 		//margin-bottom: 2.0rem;
@@ -24,6 +25,26 @@ img {
 		&.dark {
 			background: #222;
 			color: #ccc;
+		}
+	}
+	.stickynav {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		position: fixed;
+		top: 0;
+		//display: none;
+		width: 100%;
+		background: #fff;
+		border-bottom: 1px solid #222;
+		z-index: 9999999;
+		ul {
+			width: 100%;
+			margin: 0;
+			li {
+				display: inline-block;
+				padding: 1% 5% 1% 5%;
+			}
 		}
 	}
 }
