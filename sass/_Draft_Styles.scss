@@ -1,7 +1,9 @@
 img {
 	max-width: 100%;
 }
-
+a.active {
+	font-weight: bold;
+}
 .container {
 	position: relative;
 	nav {
@@ -25,6 +27,13 @@ img {
 		&.dark {
 			background: #222;
 			color: #ccc;
+			a {
+				color: #ffff99;
+				&:hover {
+					color: #ffd700;
+				}
+			}
+
 		}
 	}
 	.stickynav {

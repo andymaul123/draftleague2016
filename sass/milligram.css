@@ -500,6 +500,9 @@ h6 {
 img {
   max-width: 100%; }
 
+a.active {
+  font-weight: bold; }
+
 .container {
   position: relative; }
   .container nav {
@@ -516,6 +519,10 @@ img {
     .container section.dark {
       background: #222;
       color: #ccc; }
+      .container section.dark a {
+        color: #ffff99; }
+        .container section.dark a:hover {
+          color: #ffd700; }
   .container .stickynav {
     text-align: center;
     margin-left: auto;

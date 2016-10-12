@@ -37,7 +37,7 @@
 				<nav class="row">
 					<div class="column"><a href="draft.html">Draft</a></div>
 					<div class="column"><a href="rules.html">League Rules</a></div>
-					<div class="column"><a href="data_2016.html">Season 1 Data</a></div>
+					<div class="column"><a href="data_2016.html" class="active">Season 1 Data</a></div>
 				</nav>
 			</section>
 <!-- Chapter 1: Intro -->
@@ -285,7 +285,8 @@
 							options: {
 								title: {
 									display: true,
-									text: 'Drafted Prices (USD)'
+									text: 'Drafted Prices (USD)',
+									fontColor: "#ccc"
 										},
 								maintainAspectRatio: true,
 								responsive: true,
@@ -1021,7 +1022,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Alesha's Pool</h3>
+								<h3 class="accordion">Alesha</h3>
 								<div class="showTable">
 									<ol>
 										<li>Skullclamp</li>
@@ -1249,7 +1250,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Zur's Pool</h3>
+								<h3 class="accordion">Zur</h3>
 								<div class="showTable">
 									<ol>
 										<li>Mana Crypt</li>
@@ -1500,7 +1501,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Hazezon's Pool</h3>
+								<h3 class="accordion">Hazezon</h3>
 								<div class="showTable">
 									<ol>
 										<li>Chromatic Lantern</li>
@@ -1724,7 +1725,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Nekusar's Pool</h3>
+								<h3 class="accordion">Nekusar</h3>
 								<div class="showTable">
 									<ol>
 										<li>Waste Not</li>
@@ -1974,7 +1975,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Karador's Pool</h3>
+								<h3 class="accordion">Karador</h3>
 								<div class="showTable">
 									<ol>
 										<li>Life from the Loam</li>
@@ -2205,7 +2206,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Derevi's Pool</h3>
+								<h3 class="accordion">Derevi</h3>
 								<div class="showTable">
 									<ol>
 										<li>Sol Ring</li>
@@ -2432,7 +2433,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Maelstrom's Pool</h3>
+								<h3 class="accordion">Maelstrom</h3>
 								<div class="showTable">
 									<ol>
 										<li>Cyclonic Rift</li>
@@ -2656,7 +2657,7 @@
 								</div>
 							</div>
 							<div class="column-75">
-								<h3 class="accordion">Mimeoplasm's Pool</h3>
+								<h3 class="accordion">Mimeoplasm</h3>
 								<div class="showTable">
 									<ol>
 										<li>Deadeye Navigator</li>
@@ -2806,9 +2807,9 @@
 			};
 			var myEfficientFn = debounce(function() {
 				if (($('a[name="Intro"]').offset().top) < 0){
-					$('.stickynav').fadeIn();
+					$('.stickynav').fadeIn(300);
 				} else {
-					$('.stickynav').fadeOut();
+					$('.stickynav').fadeOut(300);
 				}
 			}, 150);
 			// Scroll event handler, passes to debounce
